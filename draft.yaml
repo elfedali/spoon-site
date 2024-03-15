@@ -1,0 +1,230 @@
+models:
+  Role:
+    name: string
+    slug: string unique
+    is_active: boolean default:true
+    relationships:
+      belongsToMany: User, Permission
+
+  Permission:
+    name: string
+    slug: string unique
+    is_active: boolean default:true
+    relationships:
+      belongsToMany: Role
+
+  Term:
+    name: string
+    slug: string unique
+    taxonomy: string default:'category'
+
+  City:
+    name: string
+    slug: string unique
+    is_active: boolean default:true
+    relationships:
+      hasMany: Street
+
+  Street:
+    city_id: id foreign:cities
+    name: string
+    slug: string unique
+    is_active: boolean default:true
+    relationships:
+      hasMany: Places
+
+  Place:
+    owner_id: id foreign:users
+    approver_id: id foreign:users nullable
+    place_type: string default:'restaurant_cafe'
+    street_id: id foreign:streets nullable
+    name: string # required
+    slug: string unique # required
+    address: string nullable
+    email: string nullable
+    website: string nullable
+    description: text nullable
+    excerpt: text nullable
+    type_cuisine: string nullable
+    type_service: string nullable
+    type_amenity: string nullable
+    position: integer default:0
+    status: string default:'pending' # pending, approved, rejected
+    reservation_required: boolean default:false # true, false
+    relationships:
+      hasMany: OpeningHour, Salle, Ping, Experience, Reservation, Demand, Review, Favorite
+      morphMany: Attachment
+
+  Reservation:
+    table_id: id foreign:tables
+    client_id: id foreign:users
+    approver_id: id foreign:users nullable
+    arrival_date: datetime
+    departure_date: datetime nullable
+    status: enum:pending,accepted,rejected
+    note: text nullable
+    relationships:
+      morphTo: Reservationable
+
+  Review:
+    reviewer_id: id foreign:users
+    rating: integer
+    comment: text nullable
+    relationships:
+      morphTo: Reviewable
+
+  Ping:
+    place_id: id foreign:places
+    date_start: datetime
+    date_end: datetime nullable
+    description: text nullable
+
+  Experience:
+    place_id: id foreign:places
+    date_start: datetime
+    date_end: datetime nullable
+    description: text nullable
+    relationships:
+      hasMany: Attachment
+
+  MenuCategory:
+    restaurant_id: id foreign:restaurants
+    name: string
+    position: integer default:0
+    relationships:
+      hasMany: MenuItem
+
+  MenuItem:
+    category_id: id foreign:menu_categories
+    name: string
+    description: text
+    price: decimal
+    position: integer default:0
+
+  OpeningHour:
+    place_id: id foreign:places
+    day: string
+    open: time nullable
+    close: time nullable
+
+  Salle:
+    restaurant_id: id foreign:restaurants
+    name: string
+    description: string
+    capacity: integer nullable
+    relationships:
+      hasMany: Table
+
+  Table:
+    salle_id: id foreign:salles
+    name: string
+    description: string nullable
+    capacity: integer default:2
+    position: integer default:0
+
+  Favorite:
+    user_id: id foreign:users
+    relationships:
+      morphTo: Favoritable
+
+  Payment:
+    user_id: id foreign:users
+    plan_id: id foreign:plans
+    amount: decimal
+    relationships:
+      belongsTo: Plan
+
+  Contact:
+    name: string
+    email: string nullable
+    subject: string nullable
+    phone: string nullable
+    message: text
+
+  Page:
+    title: string
+    slug: string
+    content: text nullable
+    author_id: id foreign:users
+    is_active: boolean default:true
+    relationships:
+      morphMany: Attachment
+
+  Post:
+    title: string
+    slug: string
+    content: text nullable
+    author_id: id foreign:users
+    is_active: boolean default:true
+    relationships:
+      morphMany: Attachment
+
+  Attachment:
+    uploader_id: id foreign:users
+    title: string
+    path: string unique
+    path_thumbnail: string nullable
+    path_medium: string nullable
+    path_large: string nullable
+    mime_type: string
+    size: integer
+    position: integer default:0
+    relationships:
+      morphTo: Attachmentable
+
+  Demand:
+    user_id: id foreign:users
+    approver_id: id foreign:users nullable
+    date_start: datetime
+    date_end: datetime nullable
+    description: text nullable
+    status: string default:'pending' # pending, approved, rejected
+    relationships:
+      morphTo: Demandable
+
+controllers:
+  Account/Role:
+    resource
+  Account/Permission: 
+    resource
+  Account/Term:
+    resource
+  Account/City:
+    resource
+  Account/Street:
+    resource
+  Account/Place:
+    resource
+  Account/Place/Reservation:
+    resource
+  Account/Place/Review:
+    resource
+  Account/Place/Ping:
+    resource
+  Account/Place/Experience:
+    resource
+  Account/Place/MenuCategory:
+    resource
+  Account/Place/MenuItem:
+    resource
+  Account/Place/OpeningHour:
+    resource
+  Account/Place/Salle:
+    resource
+  Account/Place/Table:
+    resource
+  Account/Place/Favorite:
+    resource
+  Account/Payment:
+    resource
+  Account/Contact:
+    resource
+  Account/Page:
+    resource
+  Account/Post:
+    resource
+  Account/Attachment:
+    resource
+  Account/Demand:
+    resource
+

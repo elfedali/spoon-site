@@ -1,0 +1,274 @@
+created:
+    - app/Http/Controllers/Account/RoleController.php
+    - app/Http/Controllers/Account/PermissionController.php
+    - app/Http/Controllers/Account/TermController.php
+    - app/Http/Controllers/Account/CityController.php
+    - app/Http/Controllers/Account/StreetController.php
+    - app/Http/Controllers/Account/PlaceController.php
+    - app/Http/Controllers/Account/Place/ReservationController.php
+    - app/Http/Controllers/Account/Place/ReviewController.php
+    - app/Http/Controllers/Account/Place/PingController.php
+    - app/Http/Controllers/Account/Place/ExperienceController.php
+    - app/Http/Controllers/Account/Place/MenuCategoryController.php
+    - app/Http/Controllers/Account/Place/MenuItemController.php
+    - app/Http/Controllers/Account/Place/OpeningHourController.php
+    - app/Http/Controllers/Account/Place/SalleController.php
+    - app/Http/Controllers/Account/Place/TableController.php
+    - app/Http/Controllers/Account/Place/FavoriteController.php
+    - app/Http/Controllers/Account/PaymentController.php
+    - app/Http/Controllers/Account/ContactController.php
+    - app/Http/Controllers/Account/PageController.php
+    - app/Http/Controllers/Account/PostController.php
+    - app/Http/Controllers/Account/AttachmentController.php
+    - app/Http/Controllers/Account/DemandController.php
+    - database/factories/RoleFactory.php
+    - database/factories/PermissionFactory.php
+    - database/factories/TermFactory.php
+    - database/factories/CityFactory.php
+    - database/factories/StreetFactory.php
+    - database/factories/PlaceFactory.php
+    - database/factories/ReservationFactory.php
+    - database/factories/ReviewFactory.php
+    - database/factories/PingFactory.php
+    - database/factories/ExperienceFactory.php
+    - database/factories/MenuCategoryFactory.php
+    - database/factories/MenuItemFactory.php
+    - database/factories/OpeningHourFactory.php
+    - database/factories/SalleFactory.php
+    - database/factories/TableFactory.php
+    - database/factories/FavoriteFactory.php
+    - database/factories/PaymentFactory.php
+    - database/factories/ContactFactory.php
+    - database/factories/PageFactory.php
+    - database/factories/PostFactory.php
+    - database/factories/AttachmentFactory.php
+    - database/factories/DemandFactory.php
+    - database/migrations/2024_03_15_231742_create_roles_table.php
+    - database/migrations/2024_03_15_231743_create_permissions_table.php
+    - database/migrations/2024_03_15_231744_create_terms_table.php
+    - database/migrations/2024_03_15_231745_create_cities_table.php
+    - database/migrations/2024_03_15_231746_create_streets_table.php
+    - database/migrations/2024_03_15_231747_create_places_table.php
+    - database/migrations/2024_03_15_231748_create_reservations_table.php
+    - database/migrations/2024_03_15_231749_create_reviews_table.php
+    - database/migrations/2024_03_15_231750_create_pings_table.php
+    - database/migrations/2024_03_15_231751_create_experiences_table.php
+    - database/migrations/2024_03_15_231752_create_menu_categories_table.php
+    - database/migrations/2024_03_15_231753_create_menu_items_table.php
+    - database/migrations/2024_03_15_231754_create_opening_hours_table.php
+    - database/migrations/2024_03_15_231755_create_salles_table.php
+    - database/migrations/2024_03_15_231756_create_tables_table.php
+    - database/migrations/2024_03_15_231757_create_favorites_table.php
+    - database/migrations/2024_03_15_231758_create_payments_table.php
+    - database/migrations/2024_03_15_231759_create_contacts_table.php
+    - database/migrations/2024_03_15_231800_create_pages_table.php
+    - database/migrations/2024_03_15_231801_create_posts_table.php
+    - database/migrations/2024_03_15_231802_create_attachments_table.php
+    - database/migrations/2024_03_15_231803_create_demands_table.php
+    - database/migrations/2024_03_15_231804_create_role_user_table.php
+    - database/migrations/2024_03_15_231805_create_permission_role_table.php
+    - app/Models/Role.php
+    - app/Models/Permission.php
+    - app/Models/Term.php
+    - app/Models/City.php
+    - app/Models/Street.php
+    - app/Models/Place.php
+    - app/Models/Reservation.php
+    - app/Models/Review.php
+    - app/Models/Ping.php
+    - app/Models/Experience.php
+    - app/Models/MenuCategory.php
+    - app/Models/MenuItem.php
+    - app/Models/OpeningHour.php
+    - app/Models/Salle.php
+    - app/Models/Table.php
+    - app/Models/Favorite.php
+    - app/Models/Payment.php
+    - app/Models/Contact.php
+    - app/Models/Page.php
+    - app/Models/Post.php
+    - app/Models/Attachment.php
+    - app/Models/Demand.php
+    - tests/Feature/Http/Controllers/Account/RoleControllerTest.php
+    - tests/Feature/Http/Controllers/Account/PermissionControllerTest.php
+    - tests/Feature/Http/Controllers/Account/TermControllerTest.php
+    - tests/Feature/Http/Controllers/Account/CityControllerTest.php
+    - tests/Feature/Http/Controllers/Account/StreetControllerTest.php
+    - tests/Feature/Http/Controllers/Account/PlaceControllerTest.php
+    - tests/Feature/Http/Controllers/Account/Place/ReservationControllerTest.php
+    - tests/Feature/Http/Controllers/Account/Place/ReviewControllerTest.php
+    - tests/Feature/Http/Controllers/Account/Place/PingControllerTest.php
+    - tests/Feature/Http/Controllers/Account/Place/ExperienceControllerTest.php
+    - tests/Feature/Http/Controllers/Account/Place/MenuCategoryControllerTest.php
+    - tests/Feature/Http/Controllers/Account/Place/MenuItemControllerTest.php
+    - tests/Feature/Http/Controllers/Account/Place/OpeningHourControllerTest.php
+    - tests/Feature/Http/Controllers/Account/Place/SalleControllerTest.php
+    - tests/Feature/Http/Controllers/Account/Place/TableControllerTest.php
+    - tests/Feature/Http/Controllers/Account/Place/FavoriteControllerTest.php
+    - tests/Feature/Http/Controllers/Account/PaymentControllerTest.php
+    - tests/Feature/Http/Controllers/Account/ContactControllerTest.php
+    - tests/Feature/Http/Controllers/Account/PageControllerTest.php
+    - tests/Feature/Http/Controllers/Account/PostControllerTest.php
+    - tests/Feature/Http/Controllers/Account/AttachmentControllerTest.php
+    - tests/Feature/Http/Controllers/Account/DemandControllerTest.php
+    - app/Http/Requests/Account/RoleStoreRequest.php
+    - app/Http/Requests/Account/RoleUpdateRequest.php
+    - app/Http/Requests/Account/PermissionStoreRequest.php
+    - app/Http/Requests/Account/PermissionUpdateRequest.php
+    - app/Http/Requests/Account/TermStoreRequest.php
+    - app/Http/Requests/Account/TermUpdateRequest.php
+    - app/Http/Requests/Account/CityStoreRequest.php
+    - app/Http/Requests/Account/CityUpdateRequest.php
+    - app/Http/Requests/Account/StreetStoreRequest.php
+    - app/Http/Requests/Account/StreetUpdateRequest.php
+    - app/Http/Requests/Account/PlaceStoreRequest.php
+    - app/Http/Requests/Account/PlaceUpdateRequest.php
+    - app/Http/Requests/Account\Place/ReservationStoreRequest.php
+    - app/Http/Requests/Account\Place/ReservationUpdateRequest.php
+    - app/Http/Requests/Account\Place/ReviewStoreRequest.php
+    - app/Http/Requests/Account\Place/ReviewUpdateRequest.php
+    - app/Http/Requests/Account\Place/PingStoreRequest.php
+    - app/Http/Requests/Account\Place/PingUpdateRequest.php
+    - app/Http/Requests/Account\Place/ExperienceStoreRequest.php
+    - app/Http/Requests/Account\Place/ExperienceUpdateRequest.php
+    - app/Http/Requests/Account\Place/MenuCategoryStoreRequest.php
+    - app/Http/Requests/Account\Place/MenuCategoryUpdateRequest.php
+    - app/Http/Requests/Account\Place/MenuItemStoreRequest.php
+    - app/Http/Requests/Account\Place/MenuItemUpdateRequest.php
+    - app/Http/Requests/Account\Place/OpeningHourStoreRequest.php
+    - app/Http/Requests/Account\Place/OpeningHourUpdateRequest.php
+    - app/Http/Requests/Account\Place/SalleStoreRequest.php
+    - app/Http/Requests/Account\Place/SalleUpdateRequest.php
+    - app/Http/Requests/Account\Place/TableStoreRequest.php
+    - app/Http/Requests/Account\Place/TableUpdateRequest.php
+    - app/Http/Requests/Account\Place/FavoriteStoreRequest.php
+    - app/Http/Requests/Account\Place/FavoriteUpdateRequest.php
+    - app/Http/Requests/Account/PaymentStoreRequest.php
+    - app/Http/Requests/Account/PaymentUpdateRequest.php
+    - app/Http/Requests/Account/ContactStoreRequest.php
+    - app/Http/Requests/Account/ContactUpdateRequest.php
+    - app/Http/Requests/Account/PageStoreRequest.php
+    - app/Http/Requests/Account/PageUpdateRequest.php
+    - app/Http/Requests/Account/PostStoreRequest.php
+    - app/Http/Requests/Account/PostUpdateRequest.php
+    - app/Http/Requests/Account/AttachmentStoreRequest.php
+    - app/Http/Requests/Account/AttachmentUpdateRequest.php
+    - app/Http/Requests/Account/DemandStoreRequest.php
+    - app/Http/Requests/Account/DemandUpdateRequest.php
+    - resources/views/role/index.blade.php
+    - resources/views/role/create.blade.php
+    - resources/views/role/show.blade.php
+    - resources/views/role/edit.blade.php
+    - resources/views/permission/index.blade.php
+    - resources/views/permission/create.blade.php
+    - resources/views/permission/show.blade.php
+    - resources/views/permission/edit.blade.php
+    - resources/views/term/index.blade.php
+    - resources/views/term/create.blade.php
+    - resources/views/term/show.blade.php
+    - resources/views/term/edit.blade.php
+    - resources/views/city/index.blade.php
+    - resources/views/city/create.blade.php
+    - resources/views/city/show.blade.php
+    - resources/views/city/edit.blade.php
+    - resources/views/street/index.blade.php
+    - resources/views/street/create.blade.php
+    - resources/views/street/show.blade.php
+    - resources/views/street/edit.blade.php
+    - resources/views/place/index.blade.php
+    - resources/views/place/create.blade.php
+    - resources/views/place/show.blade.php
+    - resources/views/place/edit.blade.php
+    - resources/views/reservation/index.blade.php
+    - resources/views/reservation/create.blade.php
+    - resources/views/reservation/show.blade.php
+    - resources/views/reservation/edit.blade.php
+    - resources/views/review/index.blade.php
+    - resources/views/review/create.blade.php
+    - resources/views/review/show.blade.php
+    - resources/views/review/edit.blade.php
+    - resources/views/ping/index.blade.php
+    - resources/views/ping/create.blade.php
+    - resources/views/ping/show.blade.php
+    - resources/views/ping/edit.blade.php
+    - resources/views/experience/index.blade.php
+    - resources/views/experience/create.blade.php
+    - resources/views/experience/show.blade.php
+    - resources/views/experience/edit.blade.php
+    - resources/views/menuCategory/index.blade.php
+    - resources/views/menuCategory/create.blade.php
+    - resources/views/menuCategory/show.blade.php
+    - resources/views/menuCategory/edit.blade.php
+    - resources/views/menuItem/index.blade.php
+    - resources/views/menuItem/create.blade.php
+    - resources/views/menuItem/show.blade.php
+    - resources/views/menuItem/edit.blade.php
+    - resources/views/openingHour/index.blade.php
+    - resources/views/openingHour/create.blade.php
+    - resources/views/openingHour/show.blade.php
+    - resources/views/openingHour/edit.blade.php
+    - resources/views/salle/index.blade.php
+    - resources/views/salle/create.blade.php
+    - resources/views/salle/show.blade.php
+    - resources/views/salle/edit.blade.php
+    - resources/views/table/index.blade.php
+    - resources/views/table/create.blade.php
+    - resources/views/table/show.blade.php
+    - resources/views/table/edit.blade.php
+    - resources/views/favorite/index.blade.php
+    - resources/views/favorite/create.blade.php
+    - resources/views/favorite/show.blade.php
+    - resources/views/favorite/edit.blade.php
+    - resources/views/payment/index.blade.php
+    - resources/views/payment/create.blade.php
+    - resources/views/payment/show.blade.php
+    - resources/views/payment/edit.blade.php
+    - resources/views/contact/index.blade.php
+    - resources/views/contact/create.blade.php
+    - resources/views/contact/show.blade.php
+    - resources/views/contact/edit.blade.php
+    - resources/views/page/index.blade.php
+    - resources/views/page/create.blade.php
+    - resources/views/page/show.blade.php
+    - resources/views/page/edit.blade.php
+    - resources/views/post/index.blade.php
+    - resources/views/post/create.blade.php
+    - resources/views/post/show.blade.php
+    - resources/views/post/edit.blade.php
+    - resources/views/attachment/index.blade.php
+    - resources/views/attachment/create.blade.php
+    - resources/views/attachment/show.blade.php
+    - resources/views/attachment/edit.blade.php
+    - resources/views/demand/index.blade.php
+    - resources/views/demand/create.blade.php
+    - resources/views/demand/show.blade.php
+    - resources/views/demand/edit.blade.php
+updated:
+    - routes/web.php
+models:
+    Chef: {  }
+    Supplier: {  }
+    User: { name: string, email: string, email_verified_at: 'timestamp nullable', password: string, remember_token: 'string:100 nullable' }
+    Waiter: {  }
+    Role: { name: string, slug: 'string unique', is_active: 'boolean default:true', relationships: { belongsToMany: 'User, Permission' } }
+    Permission: { name: string, slug: 'string unique', is_active: 'boolean default:true', relationships: { belongsToMany: Role } }
+    Term: { name: string, slug: 'string unique', taxonomy: "string default:'category'" }
+    City: { name: string, slug: 'string unique', is_active: 'boolean default:true', relationships: { hasMany: Street } }
+    Street: { city_id: 'id foreign:cities', name: string, slug: 'string unique', is_active: 'boolean default:true', relationships: { hasMany: Places } }
+    Place: { owner_id: 'id foreign:users', approver_id: 'id foreign:users nullable', place_type: "string default:'restaurant_cafe'", street_id: 'id foreign:streets nullable', name: string, slug: 'string unique', address: 'string nullable', email: 'string nullable', website: 'string nullable', description: 'text nullable', excerpt: 'text nullable', type_cuisine: 'string nullable', type_service: 'string nullable', type_amenity: 'string nullable', position: 'integer default:0', status: "string default:'pending'", reservation_required: 'boolean default:false', relationships: { hasMany: 'OpeningHour, Salle, Ping, Experience, Reservation, Demand, Review, Favorite', morphMany: Attachment } }
+    Reservation: { table_id: 'id foreign:tables', client_id: 'id foreign:users', approver_id: 'id foreign:users nullable', arrival_date: datetime, departure_date: 'datetime nullable', status: 'enum:pending,accepted,rejected', note: 'text nullable', relationships: { morphTo: Reservationable } }
+    Review: { reviewer_id: 'id foreign:users', rating: integer, comment: 'text nullable', relationships: { morphTo: Reviewable } }
+    Ping: { place_id: 'id foreign:places', date_start: datetime, date_end: 'datetime nullable', description: 'text nullable' }
+    Experience: { place_id: 'id foreign:places', date_start: datetime, date_end: 'datetime nullable', description: 'text nullable', relationships: { hasMany: Attachment } }
+    MenuCategory: { restaurant_id: 'id foreign:restaurants', name: string, position: 'integer default:0', relationships: { hasMany: MenuItem } }
+    MenuItem: { category_id: 'id foreign:menu_categories', name: string, description: text, price: decimal, position: 'integer default:0' }
+    OpeningHour: { place_id: 'id foreign:places', day: string, open: 'time nullable', close: 'time nullable' }
+    Salle: { restaurant_id: 'id foreign:restaurants', name: string, description: string, capacity: 'integer nullable', relationships: { hasMany: Table } }
+    Table: { salle_id: 'id foreign:salles', name: string, description: 'string nullable', capacity: 'integer default:2', position: 'integer default:0' }
+    Favorite: { user_id: 'id foreign:users', relationships: { morphTo: Favoritable } }
+    Payment: { user_id: 'id foreign:users', plan_id: 'id foreign:plans', amount: decimal, relationships: { belongsTo: Plan } }
+    Contact: { name: string, email: 'string nullable', subject: 'string nullable', phone: 'string nullable', message: text }
+    Page: { title: string, slug: string, content: 'text nullable', author_id: 'id foreign:users', is_active: 'boolean default:true', relationships: { morphMany: Attachment } }
+    Post: { title: string, slug: string, content: 'text nullable', author_id: 'id foreign:users', is_active: 'boolean default:true', relationships: { morphMany: Attachment } }
+    Attachment: { uploader_id: 'id foreign:users', title: string, path: 'string unique', path_thumbnail: 'string nullable', path_medium: 'string nullable', path_large: 'string nullable', mime_type: string, size: integer, position: 'integer default:0', relationships: { morphTo: Attachmentable } }
+    Demand: { user_id: 'id foreign:users', approver_id: 'id foreign:users nullable', date_start: datetime, date_end: 'datetime nullable', description: 'text nullable', status: "string default:'pending'", relationships: { morphTo: Demandable } }
