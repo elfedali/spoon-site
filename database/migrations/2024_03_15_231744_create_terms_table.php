@@ -27,4 +27,11 @@ return new class extends Migration
     {
         Schema::dropIfExists('terms');
     }
+
+    public function getSlugOptions(): SlugOptions
+    {
+        return SlugOptions::create()
+            ->generateSlugsFrom('name')
+            ->saveSlugsTo('slug');
+    }
 };
