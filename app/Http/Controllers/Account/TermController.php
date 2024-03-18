@@ -28,9 +28,8 @@ class TermController extends Controller
     {
         $term = Term::create($request->validated());
 
-        $request->session()->flash('term.id', $term->id);
 
-        return redirect()->route('terms.index');
+        return redirect()->route('terms.index')->with('success', __('label.model_created'));
     }
 
     public function show(Request $request, Term $term): View
@@ -47,15 +46,15 @@ class TermController extends Controller
     {
         $term->update($request->validated());
 
-        $request->session()->flash('term.id', $term->id);
 
-        return redirect()->route('terms.index');
+
+        return redirect()->route('terms.edit', $term->id)->with('success', __('label.model_updated'));
     }
 
     public function destroy(Request $request, Term $term): RedirectResponse
     {
         $term->delete();
 
-        return redirect()->route('terms.index');
+        return redirect()->route('terms.index')->with('success', __('label.model_deleted'));
     }
 }

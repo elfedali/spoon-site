@@ -36,47 +36,52 @@ Route::get('/home', [App\Http\Controllers\PageController::class, 'home'])->name(
 Route::get('/details', [App\Http\Controllers\PageController::class, 'details'])->name('details');
 
 
+// prefix: account
 
-Route::resource('roles', App\Http\Controllers\Account\RoleController::class);
+Route::group(['prefix' => 'account'], function () {
 
-Route::resource('permissions', App\Http\Controllers\Account\PermissionController::class);
+    Route::resource('roles', App\Http\Controllers\Account\RoleController::class);
 
-Route::resource('terms', App\Http\Controllers\Account\TermController::class);
+    Route::resource('permissions', App\Http\Controllers\Account\PermissionController::class);
 
-Route::resource('cities', App\Http\Controllers\Account\CityController::class);
+    Route::resource('terms', App\Http\Controllers\Account\TermController::class);
 
-Route::resource('streets', App\Http\Controllers\Account\StreetController::class);
+    Route::resource('cities', App\Http\Controllers\Account\CityController::class);
 
-Route::resource('places', App\Http\Controllers\Account\PlaceController::class);
+    Route::resource('streets', App\Http\Controllers\Account\StreetController::class);
 
-Route::resource('reservations', App\Http\Controllers\Account\Place\ReservationController::class);
+    Route::resource('places', App\Http\Controllers\Account\PlaceController::class);
 
-Route::resource('reviews', App\Http\Controllers\Account\Place\ReviewController::class);
+    Route::resource('reservations', App\Http\Controllers\Account\Place\ReservationController::class);
 
-Route::resource('pings', App\Http\Controllers\Account\Place\PingController::class);
+    Route::resource('reviews', App\Http\Controllers\Account\Place\ReviewController::class);
 
-Route::resource('experiences', App\Http\Controllers\Account\Place\ExperienceController::class);
+    Route::resource('pings', App\Http\Controllers\Account\Place\PingController::class);
 
-Route::resource('menu-categories', App\Http\Controllers\Account\Place\MenuCategoryController::class);
+    Route::resource('experiences', App\Http\Controllers\Account\Place\ExperienceController::class);
 
-Route::resource('menu-items', App\Http\Controllers\Account\Place\MenuItemController::class);
+    Route::resource('menu-categories', App\Http\Controllers\Account\Place\MenuCategoryController::class);
 
-Route::resource('opening-hours', App\Http\Controllers\Account\Place\OpeningHourController::class);
+    Route::resource('menu-items', App\Http\Controllers\Account\Place\MenuItemController::class);
 
-Route::resource('salles', App\Http\Controllers\Account\Place\SalleController::class);
+    Route::resource('opening-hours', App\Http\Controllers\Account\Place\OpeningHourController::class);
 
-Route::resource('tables', App\Http\Controllers\Account\Place\TableController::class);
+    Route::resource('salles', App\Http\Controllers\Account\Place\SalleController::class);
 
-Route::resource('favorites', App\Http\Controllers\Account\Place\FavoriteController::class);
+    Route::resource('tables', App\Http\Controllers\Account\Place\TableController::class);
 
-Route::resource('payments', App\Http\Controllers\Account\PaymentController::class);
+    Route::resource('favorites', App\Http\Controllers\Account\Place\FavoriteController::class);
 
-Route::resource('contacts', App\Http\Controllers\Account\ContactController::class);
+    Route::resource('payments', App\Http\Controllers\Account\PaymentController::class);
 
-Route::resource('pages', App\Http\Controllers\Account\PageController::class);
+    Route::resource('contacts', App\Http\Controllers\Account\ContactController::class);
 
-Route::resource('posts', App\Http\Controllers\Account\PostController::class);
+    Route::resource('pages', App\Http\Controllers\Account\PageController::class);
 
-Route::resource('attachments', App\Http\Controllers\Account\AttachmentController::class);
+    Route::resource('posts', App\Http\Controllers\Account\PostController::class);
 
-Route::resource('demands', App\Http\Controllers\Account\DemandController::class);
+    Route::resource('attachments', App\Http\Controllers\Account\AttachmentController::class);
+
+    Route::resource('demands', App\Http\Controllers\Account\DemandController::class);
+    
+});

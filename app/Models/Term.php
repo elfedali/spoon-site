@@ -14,6 +14,20 @@ class Term extends Model
     use HasSlug;
 
     /**
+     * The taxonomy of the term. (kitchen, amenity, service)
+     * used to categorize the term.
+     * @var array 
+     * 
+     */
+    public const TAXONOMY = [
+        'kitchen', # en français : cuisine
+        'amenity', # en français : équipement
+        'service', # en français : service
+        
+    ];
+
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array

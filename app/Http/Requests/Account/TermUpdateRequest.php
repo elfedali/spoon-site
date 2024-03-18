@@ -21,7 +21,6 @@ class TermUpdateRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string'],
-            'slug' => ['required', 'string', 'unique:terms,slug'],
             'taxonomy' => ['required', 'string'],
         ];
     }
