@@ -1,83 +1,153 @@
 <?php
 
 return [
-    "menu" => [
-        'dashboard' => 'Tableau de bord',
-        "home" => "Accueil",
-        "details" => "Détails",
-        "roles" => "Rôles",
-        "permissions" => "Permissions",
-        "terms" => "Termes",
-        "cities" => "Villes",
-        "streets" => "Rues",
-        "places" => "Lieux",
-        "reservations" => "Réservations",
-        "reviews" => "Avis",
-        "pings" => "Pings",
-        "experiences" => "Expériences",
-        "menu-categories" => "Catégories de menu",
-        "menu-items" => "Éléments de menu",
-        "opening-hours" => "Heures d'ouverture",
-        "salles" => "Salles",
-        "tables" => "Tables",
-        "favorites" => "Favoris",
-        "payments" => "Paiements",
-        "contacts" => "Contacts",
-        "pages" => "Pages",
-        "posts" => "Articles",
-        "attachments" => "Pièces jointes",
-        "demands" => "Demandes"
-
-    ],
-    "name" => "Nom",
-    "button" => [
-        'create' => 'Créer',
-        'edit' => 'Modifier',
-        'delete' => 'Supprimer',
-        'show' => 'Voir',
-        'save' => 'Enregistrer',
-        'cancel' => 'Annuler',
-        'back' => 'Retour',
-        'submit' => 'Soumettre',
-        'close' => 'Fermer',
-        'reset' => 'Réinitialiser',
-        'search' => 'Rechercher',
-        'clear' => 'Effacer',
-        'filter' => 'Filtrer',
-        'add' => 'Ajouter',
-        'remove' => 'Retirer',
-        'confirm' => 'Confirmer',
-        'yes' => 'Oui',
-        'no' => 'Non',
-        'view' => 'Voir',
-        'upload' => 'Télécharger',
-        'download' => 'Télécharger',
-        'import' => 'Importer',
-        'export' => 'Exporter',
-        'send' => 'Envoyer',
-        'reply' => 'Répondre',
-        'forward' => 'Transférer',
-        'print' => 'Imprimer',
-        'copy' => 'Copier',
-        'cut' => 'Couper',
-        'paste' => 'Coller',
-        'refresh' => 'Actualiser',
-    ],
-    'kitchen' => 'Cuisine',
+    // # a
+    'actions' => 'Actions',
+    'active' => 'Actif',
+    'add' => 'Ajouter',
     'amenity' => 'Équipement',
-    'service' => 'Service',
-    'select' => 'Sélectionner',
-    'taxonomy' => 'Taxonomie',
+    'attachments' => 'Pièces jointes',
     'all' => 'Tous',
+    'address' => 'Adresse',
+
+    // # b
+    'back' => 'Retour',
+
+    // # c
+    'cancel' => 'Annuler',
+    'cities' => 'Villes',
+    'close' => 'Fermer',
+    'contacts' => 'Contacts',
+    'copy' => 'Copier',
     'create' => 'Créer',
     'create_new' => 'Créer un nouveau',
-    'terms' => 'termes',
-    'term' => 'terme',
-    'slug' => 'Slug',
+    'created_at' => 'Créé à',
+    'created' => 'Créé',
+    'city' => 'Ville',
+    'country' => 'Pays',
 
+    // # d
+    'dashboard' => 'Tableau de bord',
+    'delete' => 'Supprimer',
+    'deleted_at' => 'Supprimé à',
+    'details' => 'Détails',
+    'download' => 'Télécharger',
+    'demands' => 'Demandes',
+
+    // # e
+    'edit' => 'Modifier',
+    'expand' => 'Agrandir',
+    'experiences' => 'Expériences',
+    'export' => 'Exporter',
+
+    // # f
+    'favorites' => 'Favoris',
+    'filter' => 'Filtrer',
+    'forward' => 'Transférer',
+    'featured' => 'En vedette',
+    'phone_secondary' => 'Téléphone secondaire',
+    'phone_tertiary' => 'Téléphone tertiaire',
+
+    // # h
+    'home' => 'Accueil',
+
+    // # i
+    'id' => 'ID',
+    'import' => 'Importer',
+    'inactive' => 'Inactif',
+    'images' => 'Images',
+    'in' => 'Dans',
+    'image' => 'Image',
+
+    // # k
+    'kitchen' => 'Cuisine',
+
+    // # l
+    'list' => 'Liste',
+    'location' => 'Emplacement',
+    'login' => 'Connexion',
+    'logout' => 'Déconnexion',
+    'latitude' => 'Latitude',
+    'longitude' => 'Longitude',
+
+    // # m
+    'menu-categories' => 'Catégories de menu',
+    'menu-items' => 'Éléments de menu',
     'model_created' => 'Le modèle a été créé avec succès',
-    'model_updated' => 'Le modèle a été mis à jour avec succès',
     'model_deleted' => 'Le modèle a été supprimé avec succès',
     'model_restored' => 'Le modèle a été restauré avec succès',
+    'model_updated' => 'Le modèle a été mis à jour avec succès',
+    'more' => 'Plus',
+
+    // # n
+    'name' => 'Nom',
+    'no' => 'Non',
+
+    // # o
+    'opening-hours' => 'Heures d\'ouverture',
+    'owner' => 'Propriétaire',
+
+    // # p
+    'pages' => 'Pages',
+    'payments' => 'Paiements',
+    'permissions' => 'Permissions',
+    'phone' => 'Téléphone',
+    'places' => 'Lieux',
+    'posts' => 'Articles',
+    'preview' => 'Aperçu',
+    'publish' => 'Publier',
+    'published_at' => 'Publié à',
+    'published' => 'Publié',
+
+
+    // # r
+    'refresh' => 'Actualiser',
+    'remove' => 'Retirer',
+    'reply' => 'Répondre',
+    'reset' => 'Réinitialiser',
+    'reservations' => 'Réservations',
+    'reviews' => 'Avis',
+    'reservation_required' => 'Réservation requise',
+
+    // # s
+    'salles' => 'Salles',
+    'save' => 'Enregistrer',
+    'search' => 'Rechercher',
+    'select' => 'Sélectionner',
+    'send' => 'Envoyer',
+    'service' => 'Service',
+    'show' => 'Voir',
+    'slug' => 'Slug',
+    'status' => 'Statut',
+    'streets' => 'Rues',
+    'street' => 'Rue',
+    'state' => 'État',
+
+    // # t
+    'taxonomy' => 'Taxonomie',
+    'terms' => 'Termes',
+    'title' => 'Titre',
+    'tables' => 'Tables',
+
+    // # u
+    'unapproved' => 'Non approuvé',
+    'updated_at' => 'Mis à jour à',
+    'upload' => 'Télécharger',
+
+    // # v
+    'view' => 'Voir',
+
+    // # w
+    'website' => 'Site web',
+    'with' => 'Avec',
+
+    // # y
+    'yes' => 'Oui',
+
+
+    // # z
+    'zip' => 'Code postal',
+
+    // A b c d e f g h i j k l m n o p q r s t u v w x y z
 
 ];

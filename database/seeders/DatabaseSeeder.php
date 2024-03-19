@@ -18,5 +18,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Webmaster',
             'email' => 'webmaster@spoon.ma',
         ]);
+        // place
+        \App\Models\Place::factory(10)->create();
     }
 }

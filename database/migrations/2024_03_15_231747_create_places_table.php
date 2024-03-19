@@ -15,21 +15,24 @@ return new class extends Migration
 
         Schema::create('places', function (Blueprint $table) {
             $table->id();
+
             $table->foreignId('owner_id')->constrained('users');
             $table->foreignId('approver_id')->nullable()->constrained('users');
             $table->string('place_type')->default('restaurant_cafe');
             $table->foreignId('street_id')->nullable()->constrained();
-            $table->string('name');
+            $table->string('title');
             $table->string('slug')->unique();
             $table->string('address')->nullable();
             $table->string('email')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('phone_secondary')->nullable();
+            $table->string('phone_tertiary')->nullable();
             $table->string('website')->nullable();
             $table->text('description')->nullable();
             $table->text('excerpt')->nullable();
             $table->string('type_cuisine')->nullable();
             $table->string('type_service')->nullable();
             $table->string('type_amenity')->nullable();
-            $table->integer('position')->default(0);
             $table->string('status')->default('pending');
             $table->boolean('reservation_required')->default(false);
             $table->timestamps();

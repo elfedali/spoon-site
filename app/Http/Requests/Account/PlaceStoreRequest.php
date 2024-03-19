@@ -20,21 +20,22 @@ class PlaceStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'owner_id' => ['required', 'integer', 'exists:owners,id'],
+            'owner_id' => ['required', 'integer', 'exists:users,id'],
             'approver_id' => ['nullable', 'integer', 'exists:approvers,id'],
-            'place_type' => ['required', 'string'],
+            'place_type' => ['required', 'in:restaurant,cafe,spa'],
             'street_id' => ['nullable', 'integer', 'exists:streets,id'],
-            'name' => ['required', 'string'],
-            'slug' => ['required', 'string', 'unique:places,slug'],
+            'title' => ['required', 'string'],
             'address' => ['nullable', 'string'],
             'email' => ['nullable', 'email'],
+            'phone' => ['nullable', 'string'],
+            'phone_secondary' => ['nullable', 'string'],
+            'phone_tertiary' => ['nullable', 'string'],
             'website' => ['nullable', 'string'],
             'description' => ['nullable', 'string'],
             'excerpt' => ['nullable', 'string'],
             'type_cuisine' => ['nullable', 'string'],
             'type_service' => ['nullable', 'string'],
             'type_amenity' => ['nullable', 'string'],
-            'position' => ['required', 'integer'],
             'status' => ['required', 'string'],
             'reservation_required' => ['required'],
         ];

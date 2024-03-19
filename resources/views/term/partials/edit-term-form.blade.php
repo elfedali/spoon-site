@@ -32,7 +32,7 @@
     </div>
     {{-- button --}}
     <div class="flex items-center gap-4 mt-4">
-        <x-primary-button>{{ __('label.button.edit') }}</x-primary-button>
+        <x-primary-button>{{ __('label.edit') }}</x-primary-button>
         {{-- todo:: session status model saved  --}}
     </div>
     {{ html()->form()->close() }}
@@ -42,7 +42,7 @@
 <section class="mt-4">
     {{ html()->form('DELETE', route('terms.destroy', $term->id))->open() }}
     <x-danger-button onclick="return confirm('Are you sure?')">
-        {{ __('label.button.delete') }}
+        {{ __('label.delete') }}
     </x-danger-button>
     {{ html()->form()->close() }}
 </section>

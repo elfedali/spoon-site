@@ -7,10 +7,29 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Spatie\Sluggable\HasSlug;
+use Spatie\Sluggable\SlugOptions;
 
 class Place extends Model
 {
     use HasFactory;
+    use HasSlug;
+
+    public const TYPES = [
+        'restaurant' => 'Restaurant',
+        'cafe' => 'Café',
+        // 'hotel' => 'Hôtel',
+        'spa' => 'Spa',
+        // 'salon' => 'Salon',
+    ];
+    public const STATUSES = [
+        'draft' => 'Brouillon',
+        'published' => 'Publié',
+    ];
+    public const RESERVATION_REQUIRED = [
+        '0' => 'Non',
+        '1' => 'Oui',
+    ];
 
     /**
      * The attributes that are mass assignable.
@@ -22,17 +41,19 @@ class Place extends Model
         'approver_id',
         'place_type',
         'street_id',
-        'name',
+        'title',
         'slug',
         'address',
         'email',
+        'phone',
+        'phone_secondary',
+        'phone_tertiary',
         'website',
         'description',
         'excerpt',
         'type_cuisine',
         'type_service',
         'type_amenity',
-        'position',
         'status',
         'reservation_required',
     ];
@@ -108,5 +129,23 @@ class Place extends Model
     public function street(): BelongsTo
     {
         return $this->belongsTo(Street::class);
+    }
+
+    // slug
+    /**
+     * Get the options for generating the slug.
+     */
+    public function getSlugOptions(): SlugOptions
+    {
+        return SlugOptions::create()
+            ->generateSlugsFrom('title')
+            ->saveSlugsTo('slug');
+    }
+
+
+    // on save change the 'on' reservation_required to 1
+    public function setReservationRequiredAttribute($value)
+    {
+        $this->attributes['reservation_required'] = $value === 'on' ? 1 : 0;
     }
 }

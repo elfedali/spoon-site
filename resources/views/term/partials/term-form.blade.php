@@ -1,6 +1,6 @@
 <section>
 
-    <p>
+    <p class="text-lg font-semibold dark:text-gray-200">
         Nouveau terme
     </p>
 

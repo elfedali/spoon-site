@@ -22,14 +22,15 @@ class PlaceFactory extends Factory
      */
     public function definition(): array
     {
+
         return [
             'owner_id' => User::factory(),
             'approver_id' => User::factory(),
             'place_type' => $this->faker->word(),
             'street_id' => Street::factory(),
-            'name' => $this->faker->name(),
-            'slug' => $this->faker->slug(),
-            'address' => $this->faker->word(),
+            'title' => $title = $this->faker->sentence(4),
+            'slug' => Str::slug($title) . '_' . Str::random(10),
+            'address' => $this->faker->address(),
             'email' => $this->faker->safeEmail(),
             'website' => $this->faker->word(),
             'description' => $this->faker->text(),
@@ -37,7 +38,6 @@ class PlaceFactory extends Factory
             'type_cuisine' => $this->faker->word(),
             'type_service' => $this->faker->word(),
             'type_amenity' => $this->faker->word(),
-            'position' => $this->faker->numberBetween(-10000, 10000),
             'status' => $this->faker->word(),
             'reservation_required' => $this->faker->boolean(),
         ];

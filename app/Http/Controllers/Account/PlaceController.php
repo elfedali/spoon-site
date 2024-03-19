@@ -26,6 +26,8 @@ class PlaceController extends Controller
 
     public function store(PlaceStoreRequest $request): RedirectResponse
     {
+        //dd($request->validated());
+
         $place = Place::create($request->validated());
 
         $request->session()->flash('place.id', $place->id);
