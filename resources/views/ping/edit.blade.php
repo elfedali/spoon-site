@@ -25,6 +25,11 @@
             @include('ping._form')
             {{ html()->submit('Modifier')->class('btn btn-primary') }}
             {{ html()->form()->close() }}
+
+            {{-- delete  --}}
+            {{ html()->form('DELETE', route('pings.destroy', $ping->id))->open() }}
+            {{ html()->submit('Supprimer')->class('btn btn-danger')->attributes(['onclick' => 'return confirm("Etes-vous sûr de vouloir supprimer ce ping ?")']) }}
+            {{ html()->form()->close() }}
         </div>
     </div>
 </x-app-layout>

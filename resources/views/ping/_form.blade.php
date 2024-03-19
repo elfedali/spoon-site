@@ -8,7 +8,7 @@
 {{-- description --}}
 <div class="form-group mb-3">
     <label for="description">Description</label>
-    {{ html()->textarea('description')->class(['form-control', 'is-invalid' => $errors->has('description')])->required() }}
+    {{ html()->textarea('description')->class(['form-control', 'is-invalid' => $errors->has('description')]) }}
     @error('description')
         <div class="invalid-feedback">{{ $message }}</div>
     @enderror
