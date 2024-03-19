@@ -39,6 +39,10 @@ return [
     'expand' => 'Agrandir',
     'experiences' => 'Expériences',
     'export' => 'Exporter',
+    'error' => 'Erreur',
+    'email' => 'Email',
+    'excerpt' => 'Extrait',
+    'events' => 'Événements',
 
     // # f
     'favorites' => 'Favoris',
@@ -98,6 +102,8 @@ return [
     'publish' => 'Publier',
     'published_at' => 'Publié à',
     'published' => 'Publié',
+    'pin' => 'Épingler',
+    'pings' => 'Pings',
 
 
     // # r
@@ -108,6 +114,8 @@ return [
     'reservations' => 'Réservations',
     'reviews' => 'Avis',
     'reservation_required' => 'Réservation requise',
+    'role' => 'Rôle',
+    'roles' => 'Rôles',
 
     // # s
     'salles' => 'Salles',

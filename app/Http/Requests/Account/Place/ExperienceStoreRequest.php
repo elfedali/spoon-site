@@ -24,6 +24,7 @@ class ExperienceStoreRequest extends FormRequest
             'date_start' => ['required'],
             'date_end' => ['nullable'],
             'description' => ['nullable', 'string'],
+            'title' => ['required', 'string'],
         ];
     }
 }

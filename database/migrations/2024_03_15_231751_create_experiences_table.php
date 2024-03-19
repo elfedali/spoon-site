@@ -18,6 +18,8 @@ return new class extends Migration
             $table->foreignId('place_id')->constrained();
             $table->dateTime('date_start');
             $table->dateTime('date_end')->nullable();
+            $table->string('title');
+            $table->string('slug')->unique();
             $table->text('description')->nullable();
             $table->timestamps();
         });

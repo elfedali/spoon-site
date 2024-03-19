@@ -6,10 +6,21 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Spatie\Sluggable\HasSlug;
+use Spatie\Sluggable\SlugOptions;
 
 class Experience extends Model
 {
     use HasFactory;
+    use HasSlug;
+
+
+    public function getSlugOptions(): SlugOptions
+    {
+        return SlugOptions::create()
+            ->generateSlugsFrom('title')
+            ->saveSlugsTo('slug');
+    }
 
     /**
      * The attributes that are mass assignable.
@@ -21,6 +32,8 @@ class Experience extends Model
         'date_start',
         'date_end',
         'description',
+        'title',
+        'slug'
     ];
 
     /**
