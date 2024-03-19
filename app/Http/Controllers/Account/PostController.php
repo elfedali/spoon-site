@@ -26,11 +26,17 @@ class PostController extends Controller
 
     public function store(PostStoreRequest $request): RedirectResponse
     {
-        $post = Post::create($request->validated());
 
-        $request->session()->flash('post.id', $post->id);
+        $post = Post::create(
+            array_merge(
+                $request->validated(),
+                ['author_id' => $request->user()->id]
+            )
+        );
 
-        return redirect()->route('posts.index');
+
+
+        return redirect()->route('posts.index')->with('success', __("label.model_created"));
     }
 
     public function show(Request $request, Post $post): View

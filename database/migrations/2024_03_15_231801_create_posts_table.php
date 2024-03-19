@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('slug');
             $table->text('content')->nullable();
             $table->foreignId('author_id')->constrained('users');
-            $table->boolean('is_active')->default(true);
+            $table->string('status')->default('draft'); # draft, published  
             $table->timestamps();
         });
 

@@ -6,10 +6,24 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Spatie\Sluggable\HasSlug;
+use Spatie\Sluggable\SlugOptions;
 
 class Post extends Model
 {
     use HasFactory;
+    use HasSlug;
+
+    // slug
+    /**
+     * Get the options for generating the slug.
+     */
+    public function getSlugOptions(): SlugOptions
+    {
+        return SlugOptions::create()
+            ->generateSlugsFrom('title')
+            ->saveSlugsTo('slug');
+    }
 
     /**
      * The attributes that are mass assignable.
@@ -21,7 +35,7 @@ class Post extends Model
         'slug',
         'content',
         'author_id',
-        'is_active',
+        'status',
     ];
 
     /**
