@@ -83,5 +83,4 @@ Route::group(['prefix' => 'account'], function () {
     Route::resource('attachments', App\Http\Controllers\Account\AttachmentController::class);
 
     Route::resource('demands', App\Http\Controllers\Account\DemandController::class);
-    
-});
+})->middleware(['auth', 'verified']);

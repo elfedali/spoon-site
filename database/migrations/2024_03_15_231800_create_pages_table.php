@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('title');
             $table->string('slug');
             $table->text('content')->nullable();
-            $table->foreignId('author_id')->constrained('users');
-            $table->boolean('is_active')->default(true);
+            $table->foreignId('author_id')->constrained('users')->cascadeOnDelete();
+            $table->string('status')->default('draft');
             $table->timestamps();
         });
 

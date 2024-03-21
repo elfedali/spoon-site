@@ -21,10 +21,9 @@ class PageStoreRequest extends FormRequest
     {
         return [
             'title' => ['required', 'string'],
-            'slug' => ['required', 'string'],
+
             'content' => ['nullable', 'string'],
-            'author_id' => ['required', 'integer', 'exists:authors,id'],
-            'is_active' => ['required'],
+            'status' => ['required', 'in:draft,published'],
         ];
     }
 }

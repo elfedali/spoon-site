@@ -26,11 +26,13 @@ class PageController extends Controller
 
     public function store(PageStoreRequest $request): RedirectResponse
     {
-        $page = Page::create($request->validated());
-
-        $request->session()->flash('page.id', $page->id);
-
-        return redirect()->route('pages.index');
+        $page = Page::create(
+            array_merge(
+                $request->validated(),
+                ['author_id' => $request->user()->id]
+            )
+        );
+        return redirect()->route('pages.index')->with('success', __('label.model_created'));
     }
 
     public function show(Request $request, Page $page): View
