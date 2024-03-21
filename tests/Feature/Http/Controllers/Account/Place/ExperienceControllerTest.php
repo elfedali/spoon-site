@@ -47,7 +47,7 @@ final class ExperienceControllerTest extends TestCase
         $this->assertActionUsesFormRequest(
             \App\Http\Controllers\Account\Place\ExperienceController::class,
             'store',
-            \App\Http\Requests\Account\Place\ExperienceStoreRequest::class
+            \App\Http\Place\ExperienceStoreRequest::class
         );
     }
 
@@ -106,7 +106,7 @@ final class ExperienceControllerTest extends TestCase
         $this->assertActionUsesFormRequest(
             \App\Http\Controllers\Account\Place\ExperienceController::class,
             'update',
-            \App\Http\Requests\Account\Place\ExperienceUpdateRequest::class
+            \App\Http\Place\ExperienceUpdateRequest::class
         );
     }
 

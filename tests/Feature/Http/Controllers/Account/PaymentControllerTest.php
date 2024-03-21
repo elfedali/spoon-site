@@ -47,7 +47,7 @@ final class PaymentControllerTest extends TestCase
         $this->assertActionUsesFormRequest(
             \App\Http\Controllers\Account\PaymentController::class,
             'store',
-            \App\Http\Requests\Account\PaymentStoreRequest::class
+            \App\Http\PaymentStoreRequest::class
         );
     }
 
@@ -56,7 +56,9 @@ final class PaymentControllerTest extends TestCase
     {
         $user = User::factory()->create();
         $plan = Plan::factory()->create();
-        $amount = $this->faker->randomFloat(/** decimal_attributes **/);
+        $amount = $this->faker->randomFloat(
+            /** decimal_attributes **/
+        );
 
         $response = $this->post(route('payments.store'), [
             'user_id' => $user->id,
@@ -109,7 +111,7 @@ final class PaymentControllerTest extends TestCase
         $this->assertActionUsesFormRequest(
             \App\Http\Controllers\Account\PaymentController::class,
             'update',
-            \App\Http\Requests\Account\PaymentUpdateRequest::class
+            \App\Http\PaymentUpdateRequest::class
         );
     }
 
@@ -119,7 +121,9 @@ final class PaymentControllerTest extends TestCase
         $payment = Payment::factory()->create();
         $user = User::factory()->create();
         $plan = Plan::factory()->create();
-        $amount = $this->faker->randomFloat(/** decimal_attributes **/);
+        $amount = $this->faker->randomFloat(
+            /** decimal_attributes **/
+        );
 
         $response = $this->put(route('payments.update', $payment), [
             'user_id' => $user->id,

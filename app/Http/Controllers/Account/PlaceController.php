@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Account;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Account\PlaceStoreRequest;
-use App\Http\Requests\Account\PlaceUpdateRequest;
+use App\Http\PlaceStoreRequest;
+use App\Http\PlaceUpdateRequest;
 use App\Models\Place;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;

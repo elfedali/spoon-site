@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Account;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Account\PageStoreRequest;
-use App\Http\Requests\Account\PageUpdateRequest;
+use App\Http\PageStoreRequest;
+use App\Http\PageUpdateRequest;
 use App\Models\Page;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;

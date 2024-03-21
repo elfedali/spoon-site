@@ -46,7 +46,7 @@ final class StreetControllerTest extends TestCase
         $this->assertActionUsesFormRequest(
             \App\Http\Controllers\Account\StreetController::class,
             'store',
-            \App\Http\Requests\Account\StreetStoreRequest::class
+            \App\Http\StreetStoreRequest::class
         );
     }
 
@@ -111,7 +111,7 @@ final class StreetControllerTest extends TestCase
         $this->assertActionUsesFormRequest(
             \App\Http\Controllers\Account\StreetController::class,
             'update',
-            \App\Http\Requests\Account\StreetUpdateRequest::class
+            \App\Http\StreetUpdateRequest::class
         );
     }
 

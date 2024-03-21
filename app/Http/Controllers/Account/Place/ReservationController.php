@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Account\Place;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Account\Place\ReservationStoreRequest;
-use App\Http\Requests\Account\Place\ReservationUpdateRequest;
+use App\Http\Place\ReservationStoreRequest;
+use App\Http\Place\ReservationUpdateRequest;
 use App\Models\Reservation;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;

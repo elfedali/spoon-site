@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Account\Place;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Account\Place\MenuItemStoreRequest;
-use App\Http\Requests\Account\Place\MenuItemUpdateRequest;
+use App\Http\Place\MenuItemStoreRequest;
+use App\Http\Place\MenuItemUpdateRequest;
 use App\Models\MenuItem;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;

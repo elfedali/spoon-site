@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Account;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Account\ContactStoreRequest;
-use App\Http\Requests\Account\ContactUpdateRequest;
+use App\Http\ContactStoreRequest;
+use App\Http\ContactUpdateRequest;
 use App\Models\Contact;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;

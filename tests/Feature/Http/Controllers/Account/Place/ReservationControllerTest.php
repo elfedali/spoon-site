@@ -48,7 +48,7 @@ final class ReservationControllerTest extends TestCase
         $this->assertActionUsesFormRequest(
             \App\Http\Controllers\Account\Place\ReservationController::class,
             'store',
-            \App\Http\Requests\Account\Place\ReservationStoreRequest::class
+            \App\Http\Place\ReservationStoreRequest::class
         );
     }
 
@@ -58,7 +58,9 @@ final class ReservationControllerTest extends TestCase
         $table = Table::factory()->create();
         $client = Client::factory()->create();
         $arrival_date = Carbon::parse($this->faker->dateTime());
-        $status = $this->faker->randomElement(/** enum_attributes **/);
+        $status = $this->faker->randomElement(
+            /** enum_attributes **/
+        );
 
         $response = $this->post(route('reservations.store'), [
             'table_id' => $table->id,
@@ -113,7 +115,7 @@ final class ReservationControllerTest extends TestCase
         $this->assertActionUsesFormRequest(
             \App\Http\Controllers\Account\Place\ReservationController::class,
             'update',
-            \App\Http\Requests\Account\Place\ReservationUpdateRequest::class
+            \App\Http\Place\ReservationUpdateRequest::class
         );
     }
 
@@ -124,7 +126,9 @@ final class ReservationControllerTest extends TestCase
         $table = Table::factory()->create();
         $client = Client::factory()->create();
         $arrival_date = Carbon::parse($this->faker->dateTime());
-        $status = $this->faker->randomElement(/** enum_attributes **/);
+        $status = $this->faker->randomElement(
+            /** enum_attributes **/
+        );
 
         $response = $this->put(route('reservations.update', $reservation), [
             'table_id' => $table->id,

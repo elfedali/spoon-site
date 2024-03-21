@@ -45,7 +45,7 @@ final class ContactControllerTest extends TestCase
         $this->assertActionUsesFormRequest(
             \App\Http\Controllers\Account\ContactController::class,
             'store',
-            \App\Http\Requests\Account\ContactStoreRequest::class
+            \App\Http\ContactStoreRequest::class
         );
     }
 
@@ -104,7 +104,7 @@ final class ContactControllerTest extends TestCase
         $this->assertActionUsesFormRequest(
             \App\Http\Controllers\Account\ContactController::class,
             'update',
-            \App\Http\Requests\Account\ContactUpdateRequest::class
+            \App\Http\ContactUpdateRequest::class
         );
     }
 

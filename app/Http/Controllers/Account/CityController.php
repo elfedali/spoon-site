@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Account;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Account\CityStoreRequest;
-use App\Http\Requests\Account\CityUpdateRequest;
+use App\Http\CityStoreRequest;
+use App\Http\CityUpdateRequest;
 use App\Models\City;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;

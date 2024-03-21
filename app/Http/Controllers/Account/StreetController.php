@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Account;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Account\StreetStoreRequest;
-use App\Http\Requests\Account\StreetUpdateRequest;
+use App\Http\StreetStoreRequest;
+use App\Http\StreetUpdateRequest;
 use App\Models\Street;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;

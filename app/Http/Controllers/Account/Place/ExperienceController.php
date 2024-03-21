@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Account\Place;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Account\Place\ExperienceStoreRequest;
-use App\Http\Requests\Account\Place\ExperienceUpdateRequest;
+use App\Http\Requests\ExperienceStoreRequest;
+use App\Http\Requests\ExperienceUpdateRequest;
 use App\Models\Experience;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;

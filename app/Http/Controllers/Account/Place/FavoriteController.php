@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Account\Place;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Account\Place\FavoriteStoreRequest;
-use App\Http\Requests\Account\Place\FavoriteUpdateRequest;
+use App\Http\Place\FavoriteStoreRequest;
+use App\Http\Place\FavoriteUpdateRequest;
 use App\Models\Favorite;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;

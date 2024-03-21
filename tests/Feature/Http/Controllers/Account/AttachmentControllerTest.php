@@ -46,7 +46,7 @@ final class AttachmentControllerTest extends TestCase
         $this->assertActionUsesFormRequest(
             \App\Http\Controllers\Account\AttachmentController::class,
             'store',
-            \App\Http\Requests\Account\AttachmentStoreRequest::class
+            \App\Http\AttachmentStoreRequest::class
         );
     }
 
@@ -117,7 +117,7 @@ final class AttachmentControllerTest extends TestCase
         $this->assertActionUsesFormRequest(
             \App\Http\Controllers\Account\AttachmentController::class,
             'update',
-            \App\Http\Requests\Account\AttachmentUpdateRequest::class
+            \App\Http\AttachmentUpdateRequest::class
         );
     }
 

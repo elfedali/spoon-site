@@ -42,7 +42,7 @@ Route::group(['prefix' => 'account'], function () {
 
     Route::resource('roles', App\Http\Controllers\Account\RoleController::class);
 
-    Route::resource('permissions', App\Http\Controllers\Account\PermissionController::class);
+    //Route::resource('permissions', App\Http\Controllers\Account\PermissionController::class);
 
     Route::resource('terms', App\Http\Controllers\Account\TermController::class);
 

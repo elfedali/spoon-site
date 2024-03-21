@@ -45,7 +45,7 @@ final class TermControllerTest extends TestCase
         $this->assertActionUsesFormRequest(
             \App\Http\Controllers\Account\TermController::class,
             'store',
-            \App\Http\Requests\Account\TermStoreRequest::class
+            \App\Http\TermStoreRequest::class
         );
     }
 
@@ -107,7 +107,7 @@ final class TermControllerTest extends TestCase
         $this->assertActionUsesFormRequest(
             \App\Http\Controllers\Account\TermController::class,
             'update',
-            \App\Http\Requests\Account\TermUpdateRequest::class
+            \App\Http\TermUpdateRequest::class
         );
     }
 

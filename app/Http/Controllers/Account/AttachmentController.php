@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Account;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Account\AttachmentStoreRequest;
-use App\Http\Requests\Account\AttachmentUpdateRequest;
+use App\Http\Requests\AttachmentStoreRequest;
+use App\Http\Requests\AttachmentUpdateRequest;
 use App\Models\Attachment;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;

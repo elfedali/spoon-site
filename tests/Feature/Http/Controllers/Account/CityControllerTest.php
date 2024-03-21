@@ -45,7 +45,7 @@ final class CityControllerTest extends TestCase
         $this->assertActionUsesFormRequest(
             \App\Http\Controllers\Account\CityController::class,
             'store',
-            \App\Http\Requests\Account\CityStoreRequest::class
+            \App\Http\CityStoreRequest::class
         );
     }
 
@@ -107,7 +107,7 @@ final class CityControllerTest extends TestCase
         $this->assertActionUsesFormRequest(
             \App\Http\Controllers\Account\CityController::class,
             'update',
-            \App\Http\Requests\Account\CityUpdateRequest::class
+            \App\Http\CityUpdateRequest::class
         );
     }
 

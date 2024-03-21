@@ -47,7 +47,7 @@ final class DemandControllerTest extends TestCase
         $this->assertActionUsesFormRequest(
             \App\Http\Controllers\Account\DemandController::class,
             'store',
-            \App\Http\Requests\Account\DemandStoreRequest::class
+            \App\Http\DemandStoreRequest::class
         );
     }
 
@@ -109,7 +109,7 @@ final class DemandControllerTest extends TestCase
         $this->assertActionUsesFormRequest(
             \App\Http\Controllers\Account\DemandController::class,
             'update',
-            \App\Http\Requests\Account\DemandUpdateRequest::class
+            \App\Http\DemandUpdateRequest::class
         );
     }
 

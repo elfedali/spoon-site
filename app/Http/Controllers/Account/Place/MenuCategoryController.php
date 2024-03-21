@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Account\Place;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Account\Place\MenuCategoryStoreRequest;
-use App\Http\Requests\Account\Place\MenuCategoryUpdateRequest;
+use App\Http\Place\MenuCategoryStoreRequest;
+use App\Http\Place\MenuCategoryUpdateRequest;
 use App\Models\MenuCategory;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;

@@ -46,7 +46,7 @@ final class SalleControllerTest extends TestCase
         $this->assertActionUsesFormRequest(
             \App\Http\Controllers\Account\Place\SalleController::class,
             'store',
-            \App\Http\Requests\Account\Place\SalleStoreRequest::class
+            \App\Http\Place\SalleStoreRequest::class
         );
     }
 
@@ -108,7 +108,7 @@ final class SalleControllerTest extends TestCase
         $this->assertActionUsesFormRequest(
             \App\Http\Controllers\Account\Place\SalleController::class,
             'update',
-            \App\Http\Requests\Account\Place\SalleUpdateRequest::class
+            \App\Http\Place\SalleUpdateRequest::class
         );
     }
 

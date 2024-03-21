@@ -47,7 +47,7 @@ final class PingControllerTest extends TestCase
         $this->assertActionUsesFormRequest(
             \App\Http\Controllers\Account\Place\PingController::class,
             'store',
-            \App\Http\Requests\Account\Place\PingStoreRequest::class
+            \App\Http\Place\PingStoreRequest::class
         );
     }
 
@@ -106,7 +106,7 @@ final class PingControllerTest extends TestCase
         $this->assertActionUsesFormRequest(
             \App\Http\Controllers\Account\Place\PingController::class,
             'update',
-            \App\Http\Requests\Account\Place\PingUpdateRequest::class
+            \App\Http\Place\PingUpdateRequest::class
         );
     }
 

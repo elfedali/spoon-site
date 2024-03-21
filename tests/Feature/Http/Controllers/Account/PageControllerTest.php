@@ -46,7 +46,7 @@ final class PageControllerTest extends TestCase
         $this->assertActionUsesFormRequest(
             \App\Http\Controllers\Account\PageController::class,
             'store',
-            \App\Http\Requests\Account\PageStoreRequest::class
+            \App\Http\PageStoreRequest::class
         );
     }
 
@@ -111,7 +111,7 @@ final class PageControllerTest extends TestCase
         $this->assertActionUsesFormRequest(
             \App\Http\Controllers\Account\PageController::class,
             'update',
-            \App\Http\Requests\Account\PageUpdateRequest::class
+            \App\Http\PageUpdateRequest::class
         );
     }
 

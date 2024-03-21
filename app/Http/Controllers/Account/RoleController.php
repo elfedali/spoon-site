@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Account;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Account\RoleStoreRequest;
-use App\Http\Requests\Account\RoleUpdateRequest;
+use App\Http\RoleStoreRequest;
+use App\Http\RoleUpdateRequest;
 use App\Models\Role;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -14,9 +14,7 @@ class RoleController extends Controller
 {
     public function index(Request $request): View
     {
-        $roles = Role::all();
-
-        return view('role.index', compact('roles'));
+        return view('role.index');
     }
 
     public function create(Request $request): View
@@ -26,35 +24,29 @@ class RoleController extends Controller
 
     public function store(RoleStoreRequest $request): RedirectResponse
     {
-        $role = Role::create($request->validated());
-
-        $request->session()->flash('role.id', $role->id);
 
         return redirect()->route('roles.index');
     }
 
-    public function show(Request $request, Role $role): View
+    public function show(Request $request): View
     {
-        return view('role.show', compact('role'));
+        return view('role.show');
     }
 
-    public function edit(Request $request, Role $role): View
+    public function edit(Request $request): View
     {
-        return view('role.edit', compact('role'));
+        return view('role.edit');
     }
 
-    public function update(RoleUpdateRequest $request, Role $role): RedirectResponse
+    public function update(RoleUpdateRequest $request): RedirectResponse
     {
-        $role->update($request->validated());
-
-        $request->session()->flash('role.id', $role->id);
 
         return redirect()->route('roles.index');
     }
 
-    public function destroy(Request $request, Role $role): RedirectResponse
+    public function destroy(Request $request): RedirectResponse
     {
-        $role->delete();
+
 
         return redirect()->route('roles.index');
     }

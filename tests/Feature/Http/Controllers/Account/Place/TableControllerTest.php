@@ -46,7 +46,7 @@ final class TableControllerTest extends TestCase
         $this->assertActionUsesFormRequest(
             \App\Http\Controllers\Account\Place\TableController::class,
             'store',
-            \App\Http\Requests\Account\Place\TableStoreRequest::class
+            \App\Http\Place\TableStoreRequest::class
         );
     }
 
@@ -111,7 +111,7 @@ final class TableControllerTest extends TestCase
         $this->assertActionUsesFormRequest(
             \App\Http\Controllers\Account\Place\TableController::class,
             'update',
-            \App\Http\Requests\Account\Place\TableUpdateRequest::class
+            \App\Http\Place\TableUpdateRequest::class
         );
     }
 

@@ -46,7 +46,7 @@ final class MenuCategoryControllerTest extends TestCase
         $this->assertActionUsesFormRequest(
             \App\Http\Controllers\Account\Place\MenuCategoryController::class,
             'store',
-            \App\Http\Requests\Account\Place\MenuCategoryStoreRequest::class
+            \App\Http\Place\MenuCategoryStoreRequest::class
         );
     }
 
@@ -108,7 +108,7 @@ final class MenuCategoryControllerTest extends TestCase
         $this->assertActionUsesFormRequest(
             \App\Http\Controllers\Account\Place\MenuCategoryController::class,
             'update',
-            \App\Http\Requests\Account\Place\MenuCategoryUpdateRequest::class
+            \App\Http\Place\MenuCategoryUpdateRequest::class
         );
     }
 

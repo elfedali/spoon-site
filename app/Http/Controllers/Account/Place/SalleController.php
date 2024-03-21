@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Account\Place;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Account\Place\SalleStoreRequest;
-use App\Http\Requests\Account\Place\SalleUpdateRequest;
+use App\Http\Place\SalleStoreRequest;
+use App\Http\Place\SalleUpdateRequest;
 use App\Models\Salle;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;

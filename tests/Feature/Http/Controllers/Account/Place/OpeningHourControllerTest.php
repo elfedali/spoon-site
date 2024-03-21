@@ -46,7 +46,7 @@ final class OpeningHourControllerTest extends TestCase
         $this->assertActionUsesFormRequest(
             \App\Http\Controllers\Account\Place\OpeningHourController::class,
             'store',
-            \App\Http\Requests\Account\Place\OpeningHourStoreRequest::class
+            \App\Http\Place\OpeningHourStoreRequest::class
         );
     }
 
@@ -105,7 +105,7 @@ final class OpeningHourControllerTest extends TestCase
         $this->assertActionUsesFormRequest(
             \App\Http\Controllers\Account\Place\OpeningHourController::class,
             'update',
-            \App\Http\Requests\Account\Place\OpeningHourUpdateRequest::class
+            \App\Http\Place\OpeningHourUpdateRequest::class
         );
     }
 

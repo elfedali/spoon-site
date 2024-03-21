@@ -45,7 +45,7 @@ final class PermissionControllerTest extends TestCase
         $this->assertActionUsesFormRequest(
             \App\Http\Controllers\Account\PermissionController::class,
             'store',
-            \App\Http\Requests\Account\PermissionStoreRequest::class
+            \App\Http\PermissionStoreRequest::class
         );
     }
 
@@ -107,7 +107,7 @@ final class PermissionControllerTest extends TestCase
         $this->assertActionUsesFormRequest(
             \App\Http\Controllers\Account\PermissionController::class,
             'update',
-            \App\Http\Requests\Account\PermissionUpdateRequest::class
+            \App\Http\PermissionUpdateRequest::class
         );
     }
 

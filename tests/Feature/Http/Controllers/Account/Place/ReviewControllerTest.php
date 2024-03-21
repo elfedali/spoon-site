@@ -46,7 +46,7 @@ final class ReviewControllerTest extends TestCase
         $this->assertActionUsesFormRequest(
             \App\Http\Controllers\Account\Place\ReviewController::class,
             'store',
-            \App\Http\Requests\Account\Place\ReviewStoreRequest::class
+            \App\Http\Place\ReviewStoreRequest::class
         );
     }
 
@@ -105,7 +105,7 @@ final class ReviewControllerTest extends TestCase
         $this->assertActionUsesFormRequest(
             \App\Http\Controllers\Account\Place\ReviewController::class,
             'update',
-            \App\Http\Requests\Account\Place\ReviewUpdateRequest::class
+            \App\Http\Place\ReviewUpdateRequest::class
         );
     }
 

@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Account;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Account\PostStoreRequest;
-use App\Http\Requests\Account\PostUpdateRequest;
+use App\Http\PostStoreRequest;
+use App\Http\PostUpdateRequest;
 use App\Models\Post;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;

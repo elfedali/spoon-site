@@ -46,7 +46,7 @@ final class MenuItemControllerTest extends TestCase
         $this->assertActionUsesFormRequest(
             \App\Http\Controllers\Account\Place\MenuItemController::class,
             'store',
-            \App\Http\Requests\Account\Place\MenuItemStoreRequest::class
+            \App\Http\Place\MenuItemStoreRequest::class
         );
     }
 
@@ -56,7 +56,9 @@ final class MenuItemControllerTest extends TestCase
         $category = Category::factory()->create();
         $name = $this->faker->name();
         $description = $this->faker->text();
-        $price = $this->faker->randomFloat(/** decimal_attributes **/);
+        $price = $this->faker->randomFloat(
+            /** decimal_attributes **/
+        );
         $position = $this->faker->numberBetween(-10000, 10000);
 
         $response = $this->post(route('menu-items.store'), [
@@ -114,7 +116,7 @@ final class MenuItemControllerTest extends TestCase
         $this->assertActionUsesFormRequest(
             \App\Http\Controllers\Account\Place\MenuItemController::class,
             'update',
-            \App\Http\Requests\Account\Place\MenuItemUpdateRequest::class
+            \App\Http\Place\MenuItemUpdateRequest::class
         );
     }
 
@@ -125,7 +127,9 @@ final class MenuItemControllerTest extends TestCase
         $category = Category::factory()->create();
         $name = $this->faker->name();
         $description = $this->faker->text();
-        $price = $this->faker->randomFloat(/** decimal_attributes **/);
+        $price = $this->faker->randomFloat(
+            /** decimal_attributes **/
+        );
         $position = $this->faker->numberBetween(-10000, 10000);
 
         $response = $this->put(route('menu-items.update', $menuItem), [

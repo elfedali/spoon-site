@@ -46,7 +46,7 @@ final class PlaceControllerTest extends TestCase
         $this->assertActionUsesFormRequest(
             \App\Http\Controllers\Account\PlaceController::class,
             'store',
-            \App\Http\Requests\Account\PlaceStoreRequest::class
+            \App\Http\PlaceStoreRequest::class
         );
     }
 
@@ -120,7 +120,7 @@ final class PlaceControllerTest extends TestCase
         $this->assertActionUsesFormRequest(
             \App\Http\Controllers\Account\PlaceController::class,
             'update',
-            \App\Http\Requests\Account\PlaceUpdateRequest::class
+            \App\Http\PlaceUpdateRequest::class
         );
     }
 

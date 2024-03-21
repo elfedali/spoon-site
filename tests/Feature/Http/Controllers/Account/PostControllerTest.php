@@ -46,7 +46,7 @@ final class PostControllerTest extends TestCase
         $this->assertActionUsesFormRequest(
             \App\Http\Controllers\Account\PostController::class,
             'store',
-            \App\Http\Requests\Account\PostStoreRequest::class
+            \App\Http\PostStoreRequest::class
         );
     }
 
@@ -111,7 +111,7 @@ final class PostControllerTest extends TestCase
         $this->assertActionUsesFormRequest(
             \App\Http\Controllers\Account\PostController::class,
             'update',
-            \App\Http\Requests\Account\PostUpdateRequest::class
+            \App\Http\PostUpdateRequest::class
         );
     }
 

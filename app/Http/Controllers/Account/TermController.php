@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Account;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Account\TermStoreRequest;
-use App\Http\Requests\Account\TermUpdateRequest;
+use App\Http\TermStoreRequest;
+use App\Http\TermUpdateRequest;
 use App\Models\Term;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
