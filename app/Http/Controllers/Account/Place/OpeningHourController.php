@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Account\Place;
 
 use App\Http\Controllers\Controller;
-use App\Http\Place\OpeningHourStoreRequest;
-use App\Http\Place\OpeningHourUpdateRequest;
+use App\Http\Requests\OpeningHourStoreRequest;
+use App\Http\Requests\OpeningHourUpdateRequest;
 use App\Models\OpeningHour;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;

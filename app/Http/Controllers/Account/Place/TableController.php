@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Account\Place;
 
 use App\Http\Controllers\Controller;
-use App\Http\Place\TableStoreRequest;
-use App\Http\Place\TableUpdateRequest;
+use App\Http\Requests\TableStoreRequest;
+use App\Http\Requests\TableUpdateRequest;
 use App\Models\Table;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;

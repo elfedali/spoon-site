@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Account\Place;
 
 use App\Http\Controllers\Controller;
-use App\Http\Place\PingStoreRequest;
-use App\Http\Place\PingUpdateRequest;
+use App\Http\Requests\PingStoreRequest;
+use App\Http\Requests\PingUpdateRequest;
 use App\Models\Ping;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;

@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Account;
 
 use App\Http\Controllers\Controller;
-use App\Http\DemandStoreRequest;
-use App\Http\DemandUpdateRequest;
+use App\Http\Requests\DemandStoreRequest;
+use App\Http\Requests\DemandUpdateRequest;
 use App\Models\Demand;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
