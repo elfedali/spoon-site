@@ -12,11 +12,16 @@ use Illuminate\View\View;
 
 class PlaceController extends Controller
 {
+
+    public const LISTING_VIEW = 'table'; # table or card
+
     public function index(Request $request): View
     {
-        $places = Place::all();
+        $listingView = $request->get('view', self::LISTING_VIEW);
 
-        return view('place.index', compact('places'));
+        $places = Place::all()->sortByDesc('id');
+
+        return view('place.index', compact('places', 'listingView'));
     }
 
     public function create(Request $request): View

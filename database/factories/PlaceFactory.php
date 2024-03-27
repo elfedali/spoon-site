@@ -38,7 +38,7 @@ class PlaceFactory extends Factory
             'type_cuisine' => $this->faker->word(),
             'type_service' => $this->faker->word(),
             'type_amenity' => $this->faker->word(),
-            'status' => $this->faker->word(),
+            'status' => $this->faker->randomElement(['draft', 'published']),
             'reservation_required' => $this->faker->boolean(),
         ];
     }

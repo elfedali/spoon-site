@@ -14,19 +14,18 @@
 
 @endphp
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            Ajoute un lieu
-        </h2>
-    </x-slot>
+
     <div>
-        <a href="{{ route('places.index') }}" class="text-indigo-600 dark:text-indigo-400 hover:underline">
-            {{ __('label.places') }}
+        <a href="{{ route('places.index') }}"
+            class="font-medium text-gray-500 hover:text-gray-700 dark:text-gray-300 dark:hover:text-gray-100">
+            Liste des lieux
         </a>
+        <i class="fas fa-chevron-right fa-xs mx-2 text-gray-400"></i>
+        <span class="text-gray-600 dark:text-gray-300">Créer un lieu</span>
     </div>
     {{ html()->form('POST', route('places.store'))->open() }}
     <div class="mt-4">
-        @include ('place._place-form')
+        @include ('place._form')
     </div>
     {{ html()->form()->close() }}
 

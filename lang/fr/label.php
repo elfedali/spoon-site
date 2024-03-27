@@ -33,9 +33,13 @@ return [
     'details' => 'Détails',
     'download' => 'Télécharger',
     'demands' => 'Demandes',
+    'draft' => 'Brouillon',
+    'description' => 'Description court',
+    'description_help' => 'Cette description sera affichée sur la page de détails et dans les résultats de recherche',
+    'delete_permanently' => 'Supprimer définitivement',
 
     // # e
-    'edit' => 'Modifier',
+    'edit' => 'Mettre à jour',
     'expand' => 'Agrandir',
     'experiences' => 'Expériences',
     'export' => 'Exporter',
@@ -86,6 +90,7 @@ return [
     // # n
     'name' => 'Nom',
     'no' => 'Non',
+    'neighborhood' => 'Quartier',
 
     // # o
     'opening-hours' => 'Heures d\'ouverture',
@@ -104,6 +109,7 @@ return [
     'published' => 'Publié',
     'pin' => 'Épingler',
     'pings' => 'Pings',
+    'phone_help' => 'Veuillez entrer un numéro de téléphone valide',
 
 
     // # r
@@ -113,7 +119,7 @@ return [
     'reset' => 'Réinitialiser',
     'reservations' => 'Réservations',
     'reviews' => 'Avis',
-    'reservation_required' => 'Réservation requise',
+    'reservation_required' => 'Votre restaurant peut recevoir sans réservation par téléphone ?*',
     'role' => 'Rôle',
     'roles' => 'Rôles',
 
@@ -136,6 +142,7 @@ return [
     'terms' => 'Termes',
     'title' => 'Titre',
     'tables' => 'Tables',
+    'type' => 'Type',
 
     // # u
     'unapproved' => 'Non approuvé',

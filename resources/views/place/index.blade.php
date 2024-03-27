@@ -7,54 +7,82 @@
 --}}
 
 <x-app-layout>
-    <h1>
+    <x-headline>
+        Liste des lieux
+    </x-headline>
 
-        <a href="{{ route('places.create') }}" class="text-indigo-600 dark:text-indigo-400 hover:underline">
-            Creer une nouvelle place
-        </a>
-    </h1>
+    <div class="mb-4 flex justify-between items-center">
+        <div>
+            <x-text-input placeholder="Rechercher un lieu" />
+        </div>
+        <div>
+            <x-btn-link :url="route('places.create')">
+                Créer un lieu
+            </x-btn-link>
+        </div>
+    </div>
 
 
-    <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-        <thead>
+    <x-table>
+        <x-thead>
             <tr>
-                <th scope="col" class="px-6 py-4 dark:text-gray-400">
-                    #
-                </th>
-                <th scope="col" class="px-6 py-4 dark:text-gray-400">
+                <x-th>
                     {{ __('label.title') }}
-                </th>
-                <th scope="col" class="px-6 py-4 dark:text-gray-400">
+                </x-th>
+                <x-th>
                     {{ __('label.owner') }}
-                </th>
-                <th scope="col" class="px-6 py-4 dark:text-gray-400">
+                </x-th>
+                <x-th>
+                    #id
+                </x-th>
+                <x-th>
+                    Statut
+                </x-th>
+                <x-th>
                     {{ __('label.created_at') }}
-                </th>
+                </x-th>
             </tr>
-        </thead>
-        <tbody>
+        </x-thead>
+        <x-tbody>
             @foreach ($places as $place)
-                <tr>
-                    <td class="whitespace-nowrap px-6 py-4 font-medium dark:text-gray-400">
-                        {{ $place->id }}
-                    </td>
-                    <td>
-                        <a href="{{ route('places.edit', ['place' => $place->id]) }}"
-                            class="text-indigo-600 dark:text-indigo-400 hover:underline font-medium">
-                            {{ $place->title }}
-                        </a>
-                    </td>
-                    <td class="whitespace nowrap px-6 py-4 font-medium dark:text-gray-400">
+                <x-tr>
 
-                        {{ $place->owner->id }} |
-                        {{ $place->owner->name }}
-                    </td>
-                    <td class="whitespace nowrap px-6 py-4 font-medium dark:text-gray-400">
-                        {{ $place->created_at->diffForHumans() }}
-                    </td>
-                </tr>
+                    <x-td>
+                        <div class="text-gray-900 font-medium">
+                            {{ $place->title }}
+                        </div>
+                        <a href="{{ route('places.edit', ['place' => $place->id]) }}"
+                            class="text-xs font-medium text-indigo-600 :hover:text-indigo-900">
+                            Modifier
+                        </a>
+                    </x-td>
+                    <x-td>
+
+
+                        <div id="owner-{{ $place->id }}" class="text-gray-900 font-medium">
+                            {{ $place->owner->name }}
+                        </div>
+                        <div class="text-gray-500 text-xs">
+                            #{{ $place->owner->id }} - {{ $place->owner->email }}
+                        </div>
+                    </x-td>
+                    <x-td class="text-gray-900 font-medium">
+                        #{{ $place->id }}
+                    </x-td>
+                    <x-td>
+                        <x-badge :status="$place->status" />
+                    </x-td>
+                    <x-td>
+                        <div class="text-gray-900 font-medium">
+                            {{ $place->created_at->format('d/m/Y') }}
+                        </div>
+                        <div class="text-gray-500 text-xs">
+                            {{ $place->created_at->diffForHumans() }}
+                        </div>
+                    </x-td>
+                </x-tr>
             @endforeach
-        </tbody>
-    </table>
+        </x-tbody>
+    </x-table>
 
 </x-app-layout>

@@ -31,7 +31,7 @@
     {{ html()->form('PUT', route('places.update', $place->id))->open() }}
     {{ html()->modelForm($place)->open() }}
     {{ html()->hidden('id', $place->id) }}
-    @include ('place._place-form')
+    @include ('place._form')
     {{ html()->form()->close() }}
 
 </x-app-layout>
