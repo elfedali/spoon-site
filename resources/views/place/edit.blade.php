@@ -28,6 +28,8 @@
         {{ $place->title }}
     </h1>
 
+    @include('place._tab')
+
     {{ html()->form('PUT', route('places.update', $place->id))->open() }}
     {{ html()->modelForm($place)->open() }}
     {{ html()->hidden('id', $place->id) }}

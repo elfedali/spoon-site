@@ -48,35 +48,35 @@
                 <x-tr>
 
                     <x-td>
-                        <div class="text-gray-900 font-medium">
+                        <div class="text-gray-900 font-medium dark:text-gray-200">
                             {{ $place->title }}
                         </div>
                         <a href="{{ route('places.edit', ['place' => $place->id]) }}"
-                            class="text-xs font-medium text-indigo-600 :hover:text-indigo-900">
+                            class="text-xs font-medium text-indigo-600 :hover:text-indigo-900 dark:text-indigo-400 dark:hover:text-indigo-600">
                             Modifier
                         </a>
                     </x-td>
                     <x-td>
 
 
-                        <div id="owner-{{ $place->id }}" class="text-gray-900 font-medium">
+                        <div id="owner-{{ $place->id }}" class="text-gray-900 font-medium dark:text-gray-200">
                             {{ $place->owner->name }}
                         </div>
-                        <div class="text-gray-500 text-xs">
+                        <div class="text-gray-500 text-xs dark:text-gray-400">
                             #{{ $place->owner->id }} - {{ $place->owner->email }}
                         </div>
                     </x-td>
-                    <x-td class="text-gray-900 font-medium">
+                    <x-td class="text-gray-900 font-medium dark:text-gray-200">
                         #{{ $place->id }}
                     </x-td>
                     <x-td>
                         <x-badge :status="$place->status" />
                     </x-td>
                     <x-td>
-                        <div class="text-gray-900 font-medium">
+                        <div class="text-gray-900 font-medium dark:text-gray-200">
                             {{ $place->created_at->format('d/m/Y') }}
                         </div>
-                        <div class="text-gray-500 text-xs">
+                        <div class="text-gray-500 text-xs dark:text-gray-400">
                             {{ $place->created_at->diffForHumans() }}
                         </div>
                     </x-td>

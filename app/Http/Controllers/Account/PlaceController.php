@@ -35,9 +35,9 @@ class PlaceController extends Controller
 
         $place = Place::create($request->validated());
 
-        $request->session()->flash('place.id', $place->id);
 
-        return redirect()->route('places.index');
+
+        return redirect()->route('places.index')->with('success', __('label.model_created'));
     }
 
     public function show(Request $request, Place $place): View
