@@ -36,7 +36,7 @@ models:
   Place:
     owner_id: id foreign:users
     approver_id: id foreign:users nullable
-    place_type: string default:'restaurant_cafe'
+    place_type: string default:'place_cafe'
     street_id: id foreign:streets nullable
     name: string # required
     slug: string unique # required
@@ -88,7 +88,7 @@ models:
       hasMany: Attachment
 
   MenuCategory:
-    restaurant_id: id foreign:restaurants
+    place_id: id foreign:places
     name: string
     position: integer default:0
     relationships:
@@ -108,7 +108,7 @@ models:
     close: time nullable
 
   Salle:
-    restaurant_id: id foreign:restaurants
+    place_id: id foreign:places
     name: string
     description: string
     capacity: integer nullable
@@ -183,48 +183,25 @@ models:
       morphTo: Demandable
 
 controllers:
-  Account/Role:
-    resource
-  Account/Permission: 
-    resource
-  Account/Term:
-    resource
-  Account/City:
-    resource
-  Account/Street:
-    resource
-  Account/Place:
-    resource
-  Account/Place/Reservation:
-    resource
-  Account/Place/Review:
-    resource
-  Account/Place/Ping:
-    resource
-  Account/Place/Experience:
-    resource
-  Account/Place/MenuCategory:
-    resource
-  Account/Place/MenuItem:
-    resource
-  Account/Place/OpeningHour:
-    resource
-  Account/Place/Salle:
-    resource
-  Account/Place/Table:
-    resource
-  Account/Place/Favorite:
-    resource
-  Account/Payment:
-    resource
-  Account/Contact:
-    resource
-  Account/Page:
-    resource
-  Account/Post:
-    resource
-  Account/Attachment:
-    resource
-  Account/Demand:
-    resource
-
+  Account/Role: resource
+  Account/Permission: resource
+  Account/Term: resource
+  Account/City: resource
+  Account/Street: resource
+  Account/Place: resource
+  Account/Place/Reservation: resource
+  Account/Place/Review: resource
+  Account/Place/Ping: resource
+  Account/Place/Experience: resource
+  Account/Place/MenuCategory: resource
+  Account/Place/MenuItem: resource
+  Account/Place/OpeningHour: resource
+  Account/Place/Salle: resource
+  Account/Place/Table: resource
+  Account/Place/Favorite: resource
+  Account/Payment: resource
+  Account/Contact: resource
+  Account/Page: resource
+  Account/Post: resource
+  Account/Attachment: resource
+  Account/Demand: resource

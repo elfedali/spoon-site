@@ -42,7 +42,7 @@ Route::group(['prefix' => 'account'], function () {
 
     Route::resource('roles', App\Http\Controllers\Account\RoleController::class);
 
-    //Route::resource('permissions', App\Http\Controllers\Account\PermissionController::class);
+    Route::resource('permissions', App\Http\Controllers\Account\PermissionController::class);
 
     Route::resource('terms', App\Http\Controllers\Account\TermController::class);
 
@@ -52,6 +52,11 @@ Route::group(['prefix' => 'account'], function () {
 
     Route::resource('places', App\Http\Controllers\Account\PlaceController::class);
 
+    Route::resource('/places/{place}/menu', App\Http\Controllers\Account\Place\MenuCategoryController::class)->names('places.menu');
+
+    Route::resource('/places/{place}/menu/{menuCategory}/items', App\Http\Controllers\Account\Place\MenuItemController::class);
+
+
     Route::resource('reservations', App\Http\Controllers\Account\Place\ReservationController::class);
 
     Route::resource('reviews', App\Http\Controllers\Account\Place\ReviewController::class);
@@ -60,9 +65,6 @@ Route::group(['prefix' => 'account'], function () {
 
     Route::resource('experiences', App\Http\Controllers\Account\Place\ExperienceController::class);
 
-    Route::resource('menu-categories', App\Http\Controllers\Account\Place\MenuCategoryController::class);
-
-    Route::resource('menu-items', App\Http\Controllers\Account\Place\MenuItemController::class);
 
     Route::resource('opening-hours', App\Http\Controllers\Account\Place\OpeningHourController::class);
 

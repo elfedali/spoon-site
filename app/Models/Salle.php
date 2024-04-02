@@ -17,7 +17,7 @@ class Salle extends Model
      * @var array
      */
     protected $fillable = [
-        'restaurant_id',
+        'place_id',
         'name',
         'description',
         'capacity',
@@ -30,7 +30,7 @@ class Salle extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'restaurant_id' => 'integer',
+        'place_id' => 'integer',
     ];
 
     public function tables(): HasMany
@@ -38,8 +38,8 @@ class Salle extends Model
         return $this->hasMany(Table::class);
     }
 
-    public function restaurant(): BelongsTo
+    public function place(): BelongsTo
     {
-        return $this->belongsTo(Restaurant::class);
+        return $this->belongsTo(place::class);
     }
 }

@@ -17,7 +17,7 @@ class MenuCategory extends Model
      * @var array
      */
     protected $fillable = [
-        'restaurant_id',
+        'place_id',
         'name',
         'position',
     ];
@@ -29,7 +29,7 @@ class MenuCategory extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'restaurant_id' => 'integer',
+        'place_id' => 'integer',
     ];
 
     public function menuItems(): HasMany
@@ -37,8 +37,9 @@ class MenuCategory extends Model
         return $this->hasMany(MenuItem::class);
     }
 
-    public function restaurant(): BelongsTo
+    // places
+    public function places(): BelongsTo
     {
-        return $this->belongsTo(Restaurant::class);
+        return $this->belongsTo(Place::class);
     }
 }

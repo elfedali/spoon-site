@@ -3,7 +3,7 @@
 namespace Tests\Feature\Http\Controllers\Account\Place;
 
 use App\Models\MenuCategory;
-use App\Models\Restaurant;
+use App\Models\place;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use JMac\Testing\Traits\AdditionalAssertions;
@@ -53,18 +53,18 @@ final class MenuCategoryControllerTest extends TestCase
     #[Test]
     public function store_saves_and_redirects(): void
     {
-        $restaurant = Restaurant::factory()->create();
+        $place = place::factory()->create();
         $name = $this->faker->name();
         $position = $this->faker->numberBetween(-10000, 10000);
 
         $response = $this->post(route('menu-categories.store'), [
-            'restaurant_id' => $restaurant->id,
+            'place_id' => $place->id,
             'name' => $name,
             'position' => $position,
         ]);
 
         $menuCategories = MenuCategory::query()
-            ->where('restaurant_id', $restaurant->id)
+            ->where('place_id', $place->id)
             ->where('name', $name)
             ->where('position', $position)
             ->get();
@@ -116,12 +116,12 @@ final class MenuCategoryControllerTest extends TestCase
     public function update_redirects(): void
     {
         $menuCategory = MenuCategory::factory()->create();
-        $restaurant = Restaurant::factory()->create();
+        $place = place::factory()->create();
         $name = $this->faker->name();
         $position = $this->faker->numberBetween(-10000, 10000);
 
         $response = $this->put(route('menu-categories.update', $menuCategory), [
-            'restaurant_id' => $restaurant->id,
+            'place_id' => $place->id,
             'name' => $name,
             'position' => $position,
         ]);
@@ -131,7 +131,7 @@ final class MenuCategoryControllerTest extends TestCase
         $response->assertRedirect(route('menuCategories.index'));
         $response->assertSessionHas('menuCategory.id', $menuCategory->id);
 
-        $this->assertEquals($restaurant->id, $menuCategory->restaurant_id);
+        $this->assertEquals($place->id, $menuCategory->place_id);
         $this->assertEquals($name, $menuCategory->name);
         $this->assertEquals($position, $menuCategory->position);
     }

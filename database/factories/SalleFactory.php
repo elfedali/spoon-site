@@ -4,7 +4,7 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
-use App\Models\Restaurant;
+use App\Models\place;
 use App\Models\Salle;
 
 class SalleFactory extends Factory
@@ -22,7 +22,7 @@ class SalleFactory extends Factory
     public function definition(): array
     {
         return [
-            'restaurant_id' => Restaurant::factory(),
+            'place_id' => place::factory(),
             'name' => $this->faker->name(),
             'description' => $this->faker->text(),
             'capacity' => $this->faker->numberBetween(-10000, 10000),

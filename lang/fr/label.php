@@ -119,7 +119,7 @@ return [
     'reset' => 'Réinitialiser',
     'reservations' => 'Réservations',
     'reviews' => 'Avis',
-    'reservation_required' => 'Votre restaurant peut recevoir sans réservation par téléphone ?*',
+    'reservation_required' => 'Votre place peut recevoir sans réservation par téléphone ?*',
     'role' => 'Rôle',
     'roles' => 'Rôles',
 

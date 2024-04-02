@@ -16,7 +16,7 @@ class Place extends Model
     use HasSlug;
 
     public const TYPES = [
-        'restaurant' => 'Restaurant',
+        'place' => 'place',
         'cafe' => 'Café',
         // 'hotel' => 'Hôtel',
         'spa' => 'Spa',
@@ -129,6 +129,12 @@ class Place extends Model
     public function street(): BelongsTo
     {
         return $this->belongsTo(Street::class);
+    }
+
+    // menu categeories
+    public function menuCategories(): HasMany
+    {
+        return $this->hasMany(MenuCategory::class);
     }
 
     // slug

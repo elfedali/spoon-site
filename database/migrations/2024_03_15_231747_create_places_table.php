@@ -18,7 +18,7 @@ return new class extends Migration
 
             $table->foreignId('owner_id')->constrained('users');
             $table->foreignId('approver_id')->nullable()->constrained('users');
-            $table->string('place_type')->default('restaurant_cafe');
+            $table->string('place_type')->default('place_cafe');
             $table->foreignId('street_id')->nullable()->constrained();
             $table->string('title');
             $table->string('slug')->unique();

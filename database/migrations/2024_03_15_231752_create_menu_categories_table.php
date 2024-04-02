@@ -15,9 +15,10 @@ return new class extends Migration
 
         Schema::create('menu_categories', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('restaurant_id')->constrained();
+            $table->foreignId('place_id')->constrained();
             $table->string('name');
             $table->integer('position')->default(0);
+            $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
 

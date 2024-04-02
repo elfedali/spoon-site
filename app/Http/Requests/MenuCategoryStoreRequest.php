@@ -20,7 +20,7 @@ class MenuCategoryStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'restaurant_id' => ['required', 'integer', 'exists:restaurants,id'],
+            'place_id' => ['required', 'integer', 'exists:places,id'],
             'name' => ['required', 'string'],
             'position' => ['required', 'integer'],
         ];

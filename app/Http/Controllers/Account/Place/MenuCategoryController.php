@@ -6,17 +6,19 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\MenuCategoryStoreRequest;
 use App\Http\Requests\MenuCategoryUpdateRequest;
 use App\Models\MenuCategory;
+use App\Models\Place;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class MenuCategoryController extends Controller
 {
-    public function index(Request $request): View
+    public function index(Request $request, Place $place): View
     {
-        $menuCategories = MenuCategory::all();
+        $place->load('menuCategories');
 
-        return view('menuCategory.index', compact('menuCategories'));
+
+        return view('menuCategory.index', compact('place'));
     }
 
     public function create(Request $request): View
@@ -28,9 +30,10 @@ class MenuCategoryController extends Controller
     {
         $menuCategory = MenuCategory::create($request->validated());
 
-        $request->session()->flash('menuCategory.id', $menuCategory->id);
-
-        return redirect()->route('menuCategories.index');
+        return redirect()->route(
+            'places.menu.index',
+            $menuCategory->place_id
+        )->with('success', __('label.model_created'));
     }
 
     public function show(Request $request, MenuCategory $menuCategory): View
@@ -47,15 +50,23 @@ class MenuCategoryController extends Controller
     {
         $menuCategory->update($request->validated());
 
-        $request->session()->flash('menuCategory.id', $menuCategory->id);
 
-        return redirect()->route('menuCategories.index');
+
+        return redirect()->route(
+            'places.menu.index',
+            $menuCategory->place_id
+
+        )->with('success', __('label.model_updated'));
     }
 
-    public function destroy(Request $request, MenuCategory $menuCategory): RedirectResponse
+    public function destroy(Request $request, Place $place, MenuCategory $menu): RedirectResponse
     {
-        $menuCategory->delete();
 
-        return redirect()->route('menuCategories.index');
+        $menu->delete();
+
+        return redirect()->route(
+            'places.menu.index',
+            ['place' => $place->id]
+        )->with('success', __('label.model_deleted'));
     }
 }

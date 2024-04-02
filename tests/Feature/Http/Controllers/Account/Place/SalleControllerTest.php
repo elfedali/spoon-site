@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Http\Controllers\Account\Place;
 
-use App\Models\Restaurant;
+use App\Models\place;
 use App\Models\Salle;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -53,18 +53,18 @@ final class SalleControllerTest extends TestCase
     #[Test]
     public function store_saves_and_redirects(): void
     {
-        $restaurant = Restaurant::factory()->create();
+        $place = place::factory()->create();
         $name = $this->faker->name();
         $description = $this->faker->text();
 
         $response = $this->post(route('salles.store'), [
-            'restaurant_id' => $restaurant->id,
+            'place_id' => $place->id,
             'name' => $name,
             'description' => $description,
         ]);
 
         $salles = Salle::query()
-            ->where('restaurant_id', $restaurant->id)
+            ->where('place_id', $place->id)
             ->where('name', $name)
             ->where('description', $description)
             ->get();
@@ -116,12 +116,12 @@ final class SalleControllerTest extends TestCase
     public function update_redirects(): void
     {
         $salle = Salle::factory()->create();
-        $restaurant = Restaurant::factory()->create();
+        $place = place::factory()->create();
         $name = $this->faker->name();
         $description = $this->faker->text();
 
         $response = $this->put(route('salles.update', $salle), [
-            'restaurant_id' => $restaurant->id,
+            'place_id' => $place->id,
             'name' => $name,
             'description' => $description,
         ]);
@@ -131,7 +131,7 @@ final class SalleControllerTest extends TestCase
         $response->assertRedirect(route('salles.index'));
         $response->assertSessionHas('salle.id', $salle->id);
 
-        $this->assertEquals($restaurant->id, $salle->restaurant_id);
+        $this->assertEquals($place->id, $salle->place_id);
         $this->assertEquals($name, $salle->name);
         $this->assertEquals($description, $salle->description);
     }
