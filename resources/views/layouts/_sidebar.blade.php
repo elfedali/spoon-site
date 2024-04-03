@@ -1,6 +1,6 @@
-<aside :class="{ 'translate-x-0': sidebarOpen, '-translate-x-72.5': !sidebarOpen }"
+<aside :class="{ 'translate-x-0': sidebarToggle, '-translate-x-72.5': !sidebarToggle }"
     class="absolute left-0 top-0 z-10 flex h-screen w-72.5 flex-col overflow-y-hidden bg-white duration-300 ease-linear dark:bg-gray-800 lg:static lg:translate-x-0"
-    x-data="{ sidebarOpen: false }" x-on:click.away="sidebarOpen = false">
+    x-data="{ sidebarToggle: false }" x-on:click.away="sidebarToggle = false">
 
 
     <!-- SIDEBAR HEADER -->
@@ -128,8 +128,10 @@
                     <li>
                         <a class="group relative flex items-center gap-2.5 rounded-sm px-4 py-2 font-medium text-gray-400 duration-300 ease-in-out hover:text-gray-800 dark:hover:text-gray-50 "
                             href="{{ route('places.index') }}" @click="selected = (selected === 'Places' ? '':'Places')"
-                            :class="{ 'text-gray-800 dark:text-gray-50': (selected === 'Places') && (
-                                page === 'places-index') }"
+                            :class="{
+                                'text-gray-800 dark:text-gray-50': (selected === 'Places') && (
+                                    page === 'places-index')
+                            }"
                             :class="page === 'places-index' && 'text-gray-800'">
                             <i class="fas fa-map-marker-alt text-lg"></i>
 

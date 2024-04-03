@@ -20,7 +20,7 @@ class MenuItemStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'category_id' => ['required', 'integer', 'exists:categories,id'],
+            'menu_category_id' => ['required', 'integer', 'exists:menu_categories,id'],
             'name' => ['required', 'string'],
             'description' => ['required', 'string'],
             'price' => ['required', 'numeric'],

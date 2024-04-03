@@ -15,7 +15,7 @@ return new class extends Migration
 
         Schema::create('menu_items', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('category_id')->constrained('menu_categories');
+            $table->foreignId('menu_category_id')->constrained('menu_categories');
             $table->string('name');
             $table->text('description');
             $table->decimal('price');

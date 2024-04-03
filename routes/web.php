@@ -54,7 +54,7 @@ Route::group(['prefix' => 'account'], function () {
 
     Route::resource('/places/{place}/menu', App\Http\Controllers\Account\Place\MenuCategoryController::class)->names('places.menu');
 
-    Route::resource('/places/{place}/menu/{menuCategory}/items', App\Http\Controllers\Account\Place\MenuItemController::class);
+    Route::resource('/places/menu/items', App\Http\Controllers\Account\Place\MenuItemController::class)->names('places.menu.items');
 
 
     Route::resource('reservations', App\Http\Controllers\Account\Place\ReservationController::class);

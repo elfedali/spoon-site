@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Account\Place;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\MenuItemStoreRequest;
 use App\Http\Requests\MenuItemUpdateRequest;
+use App\Models\MenuCategory;
 use App\Models\MenuItem;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -28,9 +29,14 @@ class MenuItemController extends Controller
     {
         $menuItem = MenuItem::create($request->validated());
 
-        $request->session()->flash('menuItem.id', $menuItem->id);
+        $menuCategory = MenuCategory::find($request->menu_category_id);
 
-        return redirect()->route('menuItems.index');
+        return redirect()->route('places.menu.index', [
+            'place' => $menuCategory->place_id
+        ])->with(
+            'success',
+            __('label.model_created')
+        );
     }
 
     public function show(Request $request, MenuItem $menuItem): View

@@ -15,9 +15,7 @@ class MenuCategoryController extends Controller
 {
     public function index(Request $request, Place $place): View
     {
-        $place->load('menuCategories');
-
-
+        $place->load('menuCategories', 'menuCategories.menuItems');
         return view('menuCategory.index', compact('place'));
     }
 

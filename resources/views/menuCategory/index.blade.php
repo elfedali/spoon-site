@@ -39,15 +39,32 @@
                 <article>
                     <header class="flex justify-between items-center mb-4 bg-gray-50 dark:bg-gray-800 p-4">
                         <h2 class="text-lg font-medium text-gray-800 dark:text-gray-200 leading-tight">
-                            {{ ucfirst($menu->name) }}
+                            {{ ucfirst($menu->name) }} - {{ $menu->menuItems->count() }} éléments
                         </h2>
-                        <div>
-                            {{ html()->form('DELETE', route('places.menu.destroy', ['place' => $place->id, 'menu' => $menu->id]))->open() }}
-                            {{ html()->submit('Supprimer')->class('btn-red-outline')->attribute('onclick', 'return confirm("Voulez-vous vraiment supprimer cette catégorie de menu?")') }}
-                            {{ html()->form()->close() }}
 
+
+                        <div class="flex items-center space-x-4">
+                            <button x-on:click="$dispatch('open-modal', 'add-menu-item')" class="btn">
+                                <i class="fas fa-plus"></i> Ajouter un élément de menu
+                            </button>
+
+                            <div>
+                                {{ html()->form('DELETE', route('places.menu.destroy', ['place' => $place->id, 'menu' => $menu->id]))->open() }}
+                                {{ html()->submit('Supprimer')->class('btn-red-outline')->attribute('onclick', 'return confirm("Voulez-vous vraiment supprimer cette catégorie de menu?")') }}
+                                {{ html()->form()->close() }}
+
+                            </div>
                         </div>
                     </header>
+                    <main>
+                        {{-- for existing items menu items --}}
+                        @include('menuCategory._form_menu_item', ['menu' => $menu])
+
+                        {{-- I want to get items is it correct ? --}}
+                        @foreach ($menu->menuItems as $item)
+                            @include('menuCategory._menu_item', ['item' => $item])
+                        @endforeach
+                    </main>
                 </article>
             @endforeach
         </section>
@@ -57,9 +74,6 @@
                 Aucune catégorie de menu n'est disponible pour le moment.
             </p>
         </section>
-
-
     @endif
-
 
 </x-app-layout>

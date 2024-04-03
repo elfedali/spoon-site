@@ -9,6 +9,7 @@ return [
     'attachments' => 'Pièces jointes',
     'all' => 'Tous',
     'address' => 'Adresse',
+    'add_dish' => 'Ajouter un plat',
 
     // # b
     'back' => 'Retour',

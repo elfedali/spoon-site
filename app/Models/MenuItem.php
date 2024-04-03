@@ -16,7 +16,7 @@ class MenuItem extends Model
      * @var array
      */
     protected $fillable = [
-        'category_id',
+        'menu_category_id',
         'name',
         'description',
         'price',
@@ -30,11 +30,11 @@ class MenuItem extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'category_id' => 'integer',
+        'menu_category_id' => 'integer',
         'price' => 'decimal',
     ];
 
-    public function category(): BelongsTo
+    public function menuCategory(): BelongsTo
     {
         return $this->belongsTo(MenuCategory::class);
     }
