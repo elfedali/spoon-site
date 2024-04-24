@@ -56,6 +56,15 @@ Route::group(['prefix' => 'account'], function () {
 
     Route::resource('/places/menu/items', App\Http\Controllers\Account\Place\MenuItemController::class)->names('places.menu.items');
 
+    // gallery
+    Route::get('/places/{place}/gallery', App\Http\Controllers\Account\Place\GalleryController::class)->name('places.gallery.index');
+    Route::post('/places/{place}/gallery', [App\Http\Controllers\Account\Place\GalleryController::class, 'store'])->name('places.gallery.store');
+    Route::delete('/places/{place}/gallery/{mediaId}', [App\Http\Controllers\Account\Place\GalleryController::class, 'destroy'])->name('places.gallery.destroy');
+
+    // Opening hours
+    Route::resource('place/{place}/opening-hours', App\Http\Controllers\Account\Place\OpeningHourController::class)
+        ->names('places.opening-hours')
+        ->only(['index', 'store', 'update']);
 
     Route::resource('reservations', App\Http\Controllers\Account\Place\ReservationController::class);
 
@@ -66,7 +75,7 @@ Route::group(['prefix' => 'account'], function () {
     Route::resource('experiences', App\Http\Controllers\Account\Place\ExperienceController::class);
 
 
-    Route::resource('opening-hours', App\Http\Controllers\Account\Place\OpeningHourController::class);
+
 
     Route::resource('salles', App\Http\Controllers\Account\Place\SalleController::class);
 

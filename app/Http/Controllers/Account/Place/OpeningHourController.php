@@ -16,7 +16,7 @@ class OpeningHourController extends Controller
     {
         $openingHours = OpeningHour::all();
 
-        return view('openingHour.index', compact('openingHours'));
+        return view('place.openingHour.index', compact('openingHours'));
     }
 
     public function create(Request $request): View
@@ -28,7 +28,7 @@ class OpeningHourController extends Controller
     {
         $openingHour = OpeningHour::create($request->validated());
 
-        $request->session()->flash('openingHour.id', $openingHour->id);
+
 
         return redirect()->route('openingHours.index');
     }
@@ -47,7 +47,7 @@ class OpeningHourController extends Controller
     {
         $openingHour->update($request->validated());
 
-        $request->session()->flash('openingHour.id', $openingHour->id);
+
 
         return redirect()->route('openingHours.index');
     }

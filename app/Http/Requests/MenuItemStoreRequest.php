@@ -22,9 +22,11 @@ class MenuItemStoreRequest extends FormRequest
         return [
             'menu_category_id' => ['required', 'integer', 'exists:menu_categories,id'],
             'name' => ['required', 'string'],
-            'description' => ['required', 'string'],
+            'description' => ['nullable', 'string'],
             'price' => ['required', 'numeric'],
             'position' => ['required', 'integer'],
+            'is_available' => ['nullable', 'boolean'],
+            'is_vegetarian' => ['nullable', 'boolean'],
         ];
     }
 }

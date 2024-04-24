@@ -15,7 +15,7 @@ class MenuItemController extends Controller
 {
     public function index(Request $request): View
     {
-        $menuItems = MenuItem::all();
+        $menuItems = MenuItem::all()->sortBy('position');
 
         return view('menuItem.index', compact('menuItems'));
     }
@@ -27,12 +27,25 @@ class MenuItemController extends Controller
 
     public function store(MenuItemStoreRequest $request): RedirectResponse
     {
-        $menuItem = MenuItem::create($request->validated());
+
+
+        $menuItem = MenuItem::create(
+            [
+                'menu_category_id' => $request->menu_category_id,
+                'name' => $request->name,
+                'description' => $request->description,
+                'price' => $request->price,
+                'position' => $request->position,
+                'is_available' => $request->is_available ?? false,
+                'is_vegetarian' => $request->is_vegetarian ?? false,
+            ]
+        );
 
         $menuCategory = MenuCategory::find($request->menu_category_id);
 
         return redirect()->route('places.menu.index', [
-            'place' => $menuCategory->place_id
+            'place' => $menuCategory->place_id,
+            'scrollTo' => $menuItem->id, // adding this to scroll to the created item
         ])->with(
             'success',
             __('label.model_created')
@@ -49,19 +62,29 @@ class MenuItemController extends Controller
         return view('menuItem.edit', compact('menuItem'));
     }
 
-    public function update(MenuItemUpdateRequest $request, MenuItem $menuItem): RedirectResponse
+    public function update(MenuItemUpdateRequest $request, MenuItem $item): RedirectResponse
     {
-        $menuItem->update($request->validated());
+        $item->update($request->validated());
 
-        $request->session()->flash('menuItem.id', $menuItem->id);
+        return redirect()->route('places.menu.index', [
+            'place' => $item->menuCategory->place_id,
+            'scrollTo' => $item->id, // adding this to scroll to the updated item
 
-        return redirect()->route('menuItems.index');
+        ])->with(
+            'success',
+            __('label.model_updated')
+        );
     }
 
-    public function destroy(Request $request, MenuItem $menuItem): RedirectResponse
+    public function destroy(Request $request, MenuItem $item): RedirectResponse
     {
-        $menuItem->delete();
+        $item->delete();
 
-        return redirect()->route('menuItems.index');
+        return redirect()->route('places.menu.index', [
+            'place' => $item->menuCategory->place_id
+        ])->with(
+            'success',
+            __('label.model_deleted')
+        );
     }
 }

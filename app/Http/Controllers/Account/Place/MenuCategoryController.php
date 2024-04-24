@@ -15,7 +15,12 @@ class MenuCategoryController extends Controller
 {
     public function index(Request $request, Place $place): View
     {
-        $place->load('menuCategories', 'menuCategories.menuItems');
+        // Load menu categories with their menu items ordered by position
+        $place->load(['menuCategories' => function ($query) {
+            $query->with(['menuItems' => function ($query) {
+                $query->ordered(); // Apply the scope to order menu items
+            }]);
+        }]);
         return view('menuCategory.index', compact('place'));
     }
 
@@ -60,6 +65,7 @@ class MenuCategoryController extends Controller
     public function destroy(Request $request, Place $place, MenuCategory $menu): RedirectResponse
     {
 
+        $menu->menuItems()->delete();
         $menu->delete();
 
         return redirect()->route(

@@ -36,18 +36,23 @@
     @if ($place->menuCategories->count() > 0)
         <section class="mt-4 bg-white dark:bg-gray-800 p-4">
             @foreach ($place->menuCategories as $menu)
-                <article>
-                    <header class="flex justify-between items-center mb-4 bg-gray-50 dark:bg-gray-800 p-4">
-                        <h2 class="text-lg font-medium text-gray-800 dark:text-gray-200 leading-tight">
-                            {{ ucfirst($menu->name) }} - {{ $menu->menuItems->count() }} éléments
+                <article x-data="{ showNewForm: false }" class="mb-4 border rounded ">
+                    <header class="flex justify-between items-center mb-4 p-4 border-b">
+                        <h2 class="text-lg  font-medium text-gray-800 dark:text-gray-200 leading-tight"
+                            @click="open = !open">
+
+                            {{ ucfirst($menu->name) }} - {{ $menu->menuItems->count() }} plats
                         </h2>
 
 
                         <div class="flex items-center space-x-4">
-                            <button x-on:click="$dispatch('open-modal', 'add-menu-item')" class="btn">
-                                <i class="fas fa-plus"></i> Ajouter un élément de menu
-                            </button>
+                            <div>
+                                <button @click="showNewForm = !showNewForm" class="btn">
+                                    <i class="fas fa-plus mr-2"></i>
+                                    Ajouter un plat
+                                </button>
 
+                            </div>
                             <div>
                                 {{ html()->form('DELETE', route('places.menu.destroy', ['place' => $place->id, 'menu' => $menu->id]))->open() }}
                                 {{ html()->submit('Supprimer')->class('btn-red-outline')->attribute('onclick', 'return confirm("Voulez-vous vraiment supprimer cette catégorie de menu?")') }}
@@ -57,13 +62,17 @@
                         </div>
                     </header>
                     <main>
-                        {{-- for existing items menu items --}}
-                        @include('menuCategory._form_menu_item', ['menu' => $menu])
 
-                        {{-- I want to get items is it correct ? --}}
-                        @foreach ($menu->menuItems as $item)
-                            @include('menuCategory._menu_item', ['item' => $item])
+
+                        <section :class="{ 'hidden': !showNewForm }" class="ml-8 mr-8 mb-4">
+                            @include('menuCategory.items.new-form')
+                        </section>
+                        @foreach ($menu->menuItems as $dish)
+                            <div class="ml-8 mr-8">
+                                @include('menuCategory.items.item')
+                            </div>
                         @endforeach
+
                     </main>
                 </article>
             @endforeach

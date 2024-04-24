@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     /**
-     * Run the migrations.
+     * Run the migrations. 
      */
     public function up(): void
     {
@@ -17,9 +17,13 @@ return new class extends Migration
             $table->id();
             $table->foreignId('menu_category_id')->constrained('menu_categories');
             $table->string('name');
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->decimal('price');
             $table->integer('position')->default(0);
+            // est disponible en stock
+            $table->boolean('is_available')->default(true);
+            // ce plat est vegitarian
+            $table->boolean('is_vegetarian')->default(false);
             $table->timestamps();
         });
 
