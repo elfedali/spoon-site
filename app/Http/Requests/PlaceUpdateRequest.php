@@ -22,7 +22,10 @@ class PlaceUpdateRequest extends FormRequest
         return [
             'owner_id' => ['required', 'integer', 'exists:users,id'],
             'approver_id' => ['nullable', 'integer', 'exists:approvers,id'],
-            'place_type' => ['required', 'in:place,cafe,spa'],
+            // 'place_type' => ['required', 'in:place,cafe,spa'],
+            'place_service' => ['nullable', 'string'],
+            'place_kitchen' => ['nullable', 'string'],
+
             'street_id' => ['nullable', 'integer', 'exists:streets,id'],
             'title' => ['required', 'string'],
             'address' => ['nullable', 'string'],

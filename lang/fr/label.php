@@ -103,6 +103,7 @@ return [
     'name' => 'Nom',
     'no' => 'Non',
     'neighborhood' => 'Quartier',
+    'new_restaurant' => 'Nouveau restaurant',
 
     // # o
     'opening-hours' => 'Heures d\'ouverture',
@@ -122,6 +123,8 @@ return [
     'pin' => 'Épingler',
     'pings' => 'Pings',
     'phone_help' => 'Veuillez entrer un numéro de téléphone valide',
+    'place_service' => 'Type de service',
+    'place_kitchen' => 'Type de Cuisine',
 
 
     // # r
@@ -153,6 +156,7 @@ return [
     'taxonomy' => 'Taxonomie',
     'terms' => 'Termes',
     'title' => 'Titre',
+    'title_restaurant' => 'Nom du restaurant',
     'tables' => 'Tables',
     'type' => 'Type',
     'time_start' => 'Temps de',

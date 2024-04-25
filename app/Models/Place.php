@@ -42,7 +42,11 @@ class Place extends Model implements HasMedia
     protected $fillable = [
         'owner_id',
         'approver_id',
-        'place_type',
+        // 'place_type',
+        'place_service',
+        'place_kitchen',
+
+
         'street_id',
         'title',
         'slug',

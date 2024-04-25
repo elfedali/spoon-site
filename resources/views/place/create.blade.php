@@ -18,10 +18,10 @@
     <div>
         <a href="{{ route('places.index') }}"
             class="font-medium text-gray-500 hover:text-gray-700 dark:text-gray-300 dark:hover:text-gray-100">
-            Liste des lieux
+            {{ __('label.all') }}
         </a>
         <i class="fas fa-chevron-right fa-xs mx-2 text-gray-400"></i>
-        <span class="text-gray-600 dark:text-gray-300">Créer un lieu</span>
+        <span class="text-gray-600 dark:text-gray-300">Créer un nouveau restaurant</span>
     </div>
     {{ html()->form('POST', route('places.store'))->open() }}
     <div class="mt-4">

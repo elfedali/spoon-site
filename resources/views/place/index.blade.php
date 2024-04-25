@@ -8,7 +8,7 @@
 
 <x-app-layout>
     <x-headline>
-        Liste des lieux
+        {{ __('label.places') }}
     </x-headline>
 
     <div class="mb-4 flex justify-between items-center">
@@ -17,7 +17,7 @@
         </div>
         <div>
             <x-btn-link :url="route('places.create')">
-                Créer un lieu
+                {{ __('label.new_restaurant') }}
             </x-btn-link>
         </div>
     </div>
@@ -27,7 +27,7 @@
         <x-thead>
             <tr>
                 <x-th>
-                    {{ __('label.title') }}
+                    {{ __('label.title_restaurant') }}
                 </x-th>
                 <x-th>
                     {{ __('label.owner') }}

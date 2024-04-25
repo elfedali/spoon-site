@@ -25,16 +25,35 @@ dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 ro
 @endphp
 {{-- title --}}
 
-<section class="grid grid-cols-1 xl:gap-4 mt-4 xl:grid-cols-3">
+<section class="grid grid-cols-1 xl:gap-4 mt-4 xl:grid-cols-3 bg-white p-4 rounded">
     <div class="col-span-2">
         <div class="mb-3">
-            {{ html()->label(__('label.title'), 'title')->class('form-label') }}
+            {{ html()->label(__('label.title_restaurant') . '*', 'title')->class('form-label') }}
             {{ html()->text('title')->class('form-control') }}
+
+            {{-- error --}}
+            @if ($errors->has('title'))
+                <div class="text-red-500 text-xs mt-1">
+                    {{ $errors->first('title') }}
+                </div>
+            @endif
+
+
         </div>
-        <div class="mb-3">
+        {{-- <div class="mb-3">
             {{ html()->label(__('label.type'), 'type')->class('form-label') }}
             {{ html()->select('place_type', $places_types)->class('form-control') }}
+        </div> --}}
+        <div class="mb-3">
+            {{ html()->label(__('label.place_service'), 'place_service')->class('form-label') }}
+            {{ html()->text('place_service')->class('form-control') }}
         </div>
+
+        <div class="mb-3">
+            {{ html()->label(__('label.place_kitchen'), 'place_kitchen')->class('form-label') }}
+            {{ html()->text('place_kitchen')->class('form-control') }}
+        </div>
+
         <div class="mb-3">
             {{ html()->label(__('label.description'), 'description')->class('form-label') }}
             {{ html()->textarea('description')->class('form-control')->rows(5) }}
@@ -102,10 +121,12 @@ dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 ro
     </div>
     <!-- /.col-span-2 -->
     <div class="col-span-1">
-        <div class="mb-3">
+        {{-- <div class="mb-3">
             {{ html()->label(__('label.owner'), 'owner_id')->class('form-label') }}
             {{ html()->select('owner_id', $owners)->class('form-control') }}
-        </div>
+        </div> --}}
+        {{-- hidden --}}
+        {{ html()->hidden('owner_id', auth()->user()->id) }}
         <div class="mb-3">
             {{ html()->label(__('label.website'), 'website')->class('form-label') }}
             {{ html()->text('website')->class('form-control') }}

@@ -19,7 +19,16 @@ class PlaceController extends Controller
     {
         $listingView = $request->get('view', self::LISTING_VIEW);
 
-        $places = Place::all()->sortByDesc('id');
+        /**
+         * @var \App\Models\User 
+         */
+        $user = auth()->user();
+
+        if ($user->hasRole('SuperAdmin')) {
+            $places = Place::all()->sortByDesc('id');
+        } else {
+            $places = $user->places()->get()->sortByDesc('id');
+        }
 
         return view('place.index', compact('places', 'listingView'));
     }
