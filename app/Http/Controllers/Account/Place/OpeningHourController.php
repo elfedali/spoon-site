@@ -6,56 +6,45 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\OpeningHourStoreRequest;
 use App\Http\Requests\OpeningHourUpdateRequest;
 use App\Models\OpeningHour;
+use App\Models\Place;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+use Spatie\OpeningHours\OpeningHours;
 
 class OpeningHourController extends Controller
 {
-    public function index(Request $request): View
+    public function index(Request $request, Place $place): View
     {
-        $openingHours = OpeningHour::all();
+        // $openingHours = OpeningHour::all();
+        $openingHours =
+            OpeningHours::create([
+                'monday'     => ['09:00-12:00', '13:00-18:00'],
+                'tuesday'    => ['09:00-12:00', '13:00-18:00'],
+                'wednesday'  => ['09:00-12:00'],
+                'thursday'   => ['09:00-12:00', '13:00-18:00'],
+                'friday'     => ['09:00-12:00', '13:00-20:00'],
+                'saturday'   => ['09:00-12:00', '13:00-16:00'],
+                'sunday'     => [],
+                'exceptions' => [
+                    '2016-11-11' => ['09:00-12:00'],
+                    '2016-12-25' => [],
+                    '01-01'      => [],                // Recurring on each 1st of January
+                    '12-25'      => ['09:00-12:00'],   // Recurring on each 25th of December
+                ],
+            ]);
+        dump($openingHours);
+        // save it to opening_hours filed as serialised array
 
-        return view('place.openingHour.index', compact('openingHours'));
+        return view('place.openingHour.index', compact('place'));
     }
 
-    public function create(Request $request): View
+
+    public function update(OpeningHourUpdateRequest $request, Place $place): RedirectResponse
     {
-        return view('openingHour.create');
-    }
-
-    public function store(OpeningHourStoreRequest $request): RedirectResponse
-    {
-        $openingHour = OpeningHour::create($request->validated());
 
 
 
-        return redirect()->route('openingHours.index');
-    }
-
-    public function show(Request $request, OpeningHour $openingHour): View
-    {
-        return view('openingHour.show', compact('openingHour'));
-    }
-
-    public function edit(Request $request, OpeningHour $openingHour): View
-    {
-        return view('openingHour.edit', compact('openingHour'));
-    }
-
-    public function update(OpeningHourUpdateRequest $request, OpeningHour $openingHour): RedirectResponse
-    {
-        $openingHour->update($request->validated());
-
-
-
-        return redirect()->route('openingHours.index');
-    }
-
-    public function destroy(Request $request, OpeningHour $openingHour): RedirectResponse
-    {
-        $openingHour->delete();
-
-        return redirect()->route('openingHours.index');
+        return redirect()->route('place.openingHours.index');
     }
 }

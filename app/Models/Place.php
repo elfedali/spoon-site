@@ -59,6 +59,7 @@ class Place extends Model implements HasMedia
         'type_amenity',
         'status',
         'reservation_required',
+        'opening_hours'
     ];
 
     /**

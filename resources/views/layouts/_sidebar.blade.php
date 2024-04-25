@@ -6,7 +6,11 @@
     <!-- SIDEBAR HEADER -->
     <div class="flex items-center justify-between gap-2 px-6 py-5.5 lg:py-6.5">
         <a href="{{ route('dashboard') }}">
-            <img src="{{ asset('images/logo-owner.png') }}" alt="logo" class="h-10 w-auto">
+            @if (auth()->user()->hasRole('SuperAdmin'))
+                <img src="{{ asset('images/logo-superadmin.svg') }}" alt="logo" class="h-10 w-auto">
+            @else
+                <img src="{{ asset('images/logo-owner.svg') }}" alt="logo" class="h-10 w-auto">
+            @endif
         </a>
 
         <button class="block lg:hidden" @click.stop="sidebarToggle = !sidebarToggle">
@@ -29,7 +33,7 @@
 
                 <ul class="mb-6 flex flex-col gap-1.5">
                     <!-- Menu Item Dashboard -->
-                    <li>
+                    <li class="hidden">
                         <a class="group relative flex items-center gap-2.5 rounded-sm px-4 py-2 font-medium text-gray-400 duration-300 ease-in-out hover:text-gray-800 dark:hover:text-gray-50 "
                             href="#" @click.prevent="selected = (selected === 'Dashboard' ? '':'Dashboard')"
                             :class="{
@@ -63,35 +67,67 @@
                     <!-- Menu Item Dashboard -->
 
                     <!-- Menu Item Blog -->
-                    <li>
-                        <a class="group relative flex items-center gap-2.5 rounded-sm px-4 py-2 font-medium text-gray-400 duration-300 ease-in-out hover:text-gray-800 dark:hover:text-gray-50"
-                            href="{{ route('posts.index') }}" @click="selected = (selected === 'Posts' ? '':'Posts')"
-                            :class="{ 'text-gray-800 dark:text-gray-50': (selected === 'Posts') && (page === 'posts-index') }"
-                            :class="page === 'posts-index' && 'text-gray-800'">
-                            <i class="fas fa-pencil-alt text-lg"></i>
-                            Posts
-                        </a>
-                    </li>
+                    @if (auth()->user()->hasRole('SuperAdmin'))
+                        <li>
+                            <a class="group relative flex items-center gap-2.5 rounded-sm px-4 py-2 font-medium text-gray-400 duration-300 ease-in-out hover:text-gray-800 dark:hover:text-gray-50"
+                                href="{{ route('posts.index') }}"
+                                @click="selected = (selected === 'Posts' ? '':'Posts')"
+                                :class="{
+                                    'text-gray-800 dark:text-gray-50': (selected === 'Posts') && (
+                                        page === 'posts-index')
+                                }"
+                                :class="page === 'posts-index' && 'text-gray-800'">
+                                <i class="fas fa-pencil-alt text-lg"></i>
+                                Posts
+                            </a>
+                        </li>
+                    @endif
                     <!-- Menu Item Page -->
-                    <li>
-                        <a class="group relative flex items-center gap-2.5 rounded-sm px-4 py-2 font-medium text-gray-400 duration-300 ease-in-out hover:text-gray-800 dark:hover:text-gray-50 "
-                            href="{{ route('pages.index') }}" @click="selected = (selected === 'Pages' ? '':'Pages')"
-                            :class="{ 'text-gray-800 dark:text-gray-50': (selected === 'Pages') && (page === 'pages-index') }"
-                            :class="page === 'pages-index' && 'text-gray-800'">
-                            <i class="fas fa-file text-lg"></i>
+                    @if (auth()->user()->hasRole('SuperAdmin'))
+                        <li>
+                            <a class="group relative flex items-center gap-2.5 rounded-sm px-4 py-2 font-medium text-gray-400 duration-300 ease-in-out hover:text-gray-800 dark:hover:text-gray-50 "
+                                href="{{ route('pages.index') }}"
+                                @click="selected = (selected === 'Pages' ? '':'Pages')"
+                                :class="{
+                                    'text-gray-800 dark:text-gray-50': (selected === 'Pages') && (
+                                        page === 'pages-index')
+                                }"
+                                :class="page === 'pages-index' && 'text-gray-800'">
+                                <i class="fas fa-file text-lg"></i>
 
-                            Pages
-                        </a>
-                    </li>
+                                Pages
+                            </a>
+                        </li>
+                    @endif
                     <!-- Menu Item Ping -->
+                    @if (auth()->user()->hasRole('SuperAdmin'))
+                        <li>
+                            <a class="group relative flex items-center gap-2.5 rounded-sm px-4 py-2 font-medium text-gray-400 duration-300 ease-in-out hover:text-gray-800 dark:hover:text-gray-50 "
+                                href="{{ route('pings.index') }}"
+                                @click="selected = (selected === 'Pings' ? '':'Pings')"
+                                :class="{
+                                    'text-gray-800 dark:text-gray-50': (selected === 'Pings') && (
+                                        page === 'pings-index')
+                                }"
+                                :class="page === 'pings-index' && 'text-gray-800'">
+                                <i class="fas fa-thumbtack text-lg"></i>
+
+                                Pings
+                            </a>
+                        </li>
+                    @endif
+                    <!-- Menu Item Places -->
                     <li>
                         <a class="group relative flex items-center gap-2.5 rounded-sm px-4 py-2 font-medium text-gray-400 duration-300 ease-in-out hover:text-gray-800 dark:hover:text-gray-50 "
-                            href="{{ route('pings.index') }}" @click="selected = (selected === 'Pings' ? '':'Pings')"
-                            :class="{ 'text-gray-800 dark:text-gray-50': (selected === 'Pings') && (page === 'pings-index') }"
-                            :class="page === 'pings-index' && 'text-gray-800'">
-                            <i class="fas fa-thumbtack text-lg"></i>
+                            href="{{ route('places.index') }}" @click="selected = (selected === 'Places' ? '':'Places')"
+                            :class="{
+                                'text-gray-800 dark:text-gray-50': (selected === 'Places') && (
+                                    page === 'places-index')
+                            }"
+                            :class="page === 'places-index' && 'text-gray-800'">
+                            <i class="fas fa-map-marker-alt text-lg"></i>
 
-                            Pings
+                            {{ __('label.places') }}
                         </a>
                     </li>
                     <!-- Menu Item Experiences -->
@@ -124,22 +160,9 @@
                             Demandes
                         </a>
                     </li>
-                    <!-- Menu Item Places -->
-                    <li>
-                        <a class="group relative flex items-center gap-2.5 rounded-sm px-4 py-2 font-medium text-gray-400 duration-300 ease-in-out hover:text-gray-800 dark:hover:text-gray-50 "
-                            href="{{ route('places.index') }}" @click="selected = (selected === 'Places' ? '':'Places')"
-                            :class="{
-                                'text-gray-800 dark:text-gray-50': (selected === 'Places') && (
-                                    page === 'places-index')
-                            }"
-                            :class="page === 'places-index' && 'text-gray-800'">
-                            <i class="fas fa-map-marker-alt text-lg"></i>
 
-                            Lieux
-                        </a>
-                    </li>
                     <!-- Menu Item Terms -->
-                    <li>
+                    <li class="hidden">
                         <a class="group relative flex items-center gap-2.5 rounded-sm px-4 py-2 font-medium text-gray-400 duration-300 ease-in-out hover:text-gray-800 dark:hover:text-gray-50 "
                             href="#" @click.prevent="selected = (selected === 'Terms' ? '':'Terms')"
                             :class="{

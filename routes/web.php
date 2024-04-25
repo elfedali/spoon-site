@@ -26,6 +26,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    // roles
+    Route::get('/roles', [App\Http\Controllers\RoleController::class, 'index'])->name('roles.index');
 });
 
 require __DIR__ . '/auth.php';
@@ -64,7 +67,7 @@ Route::group(['prefix' => 'account'], function () {
     // Opening hours
     Route::resource('place/{place}/opening-hours', App\Http\Controllers\Account\Place\OpeningHourController::class)
         ->names('places.opening-hours')
-        ->only(['index', 'store', 'update']);
+        ->only(['index', 'update']);
 
     Route::resource('reservations', App\Http\Controllers\Account\Place\ReservationController::class);
 

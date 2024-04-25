@@ -38,6 +38,16 @@ return [
     'description' => 'Description court',
     'description_help' => 'Cette description sera affichée sur la page de détails et dans les résultats de recherche',
     'delete_permanently' => 'Supprimer définitivement',
+    'day' => 'Jour',
+    'days' => [
+        'monday' => 'Lundi',
+        'tuesday' => 'Mardi',
+        'wednesday' => 'Mercredi',
+        'thursday' => 'Jeudi',
+        'friday' => 'Vendredi',
+        'saturday' => 'Samedi',
+        'sunday' => 'Dimanche',
+    ],
 
     // # e
     'edit' => 'Mettre à jour',
@@ -67,6 +77,7 @@ return [
     'images' => 'Images',
     'in' => 'Dans',
     'image' => 'Image',
+    'is_open' => 'Est ouvert',
 
     // # k
     'kitchen' => 'Cuisine',
@@ -102,7 +113,7 @@ return [
     'payments' => 'Paiements',
     'permissions' => 'Permissions',
     'phone' => 'Téléphone',
-    'places' => 'Lieux',
+    'places' => 'Restaurants',
     'posts' => 'Articles',
     'preview' => 'Aperçu',
     'publish' => 'Publier',
@@ -144,6 +155,8 @@ return [
     'title' => 'Titre',
     'tables' => 'Tables',
     'type' => 'Type',
+    'time_start' => 'Temps de',
+    'time_end' => 'Temps à',
 
     // # u
     'unapproved' => 'Non approuvé',

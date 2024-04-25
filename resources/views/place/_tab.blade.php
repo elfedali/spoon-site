@@ -5,8 +5,8 @@
 @endphp
 
 
-<div
-    class="text-sm font-medium text-center text-gray-500 border-b border-gray-200 dark:text-gray-400 dark:border-gray-700">
+<section
+    class="text-sm font-medium text-center text-gray-500 border-b border-gray-200 dark:text-gray-400 dark:border-gray-700 mb-5">
     <ul class="flex flex-wrap -mb-px">
         <li class="me-2">
             <a href="{{ route('places.edit', ['place' => $place->id]) }}"
@@ -29,9 +29,12 @@
                 Galerie
             </a>
         </li>
+
         <li class="me-2">
-            <a href="#"
-                class="inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300">
+            <a href="{{ route('places.opening-hours.index', ['place' => $place->id]) }}"
+                class="inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
+                :class="{ '{{ $active_classes }}': page === 'places-opening-hours-index' }">
+
                 Horaires
             </a>
         </li>
@@ -44,4 +47,4 @@
             </a>
         </li>
     </ul>
-</div>
+</section>

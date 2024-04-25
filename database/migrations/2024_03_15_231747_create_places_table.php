@@ -35,6 +35,9 @@ return new class extends Migration
             $table->string('type_amenity')->nullable();
             $table->string('status')->default('pending');
             $table->boolean('reservation_required')->default(false);
+            //opening_hours
+            $table->string('opening_hours')->nullable();
+
             $table->timestamps();
         });
 
