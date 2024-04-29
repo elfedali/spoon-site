@@ -19,6 +19,7 @@ class PlaceUpdateRequest extends FormRequest
      */
     public function rules(): array
     {
+        // dd($this->all());
         return [
             'owner_id' => ['required', 'integer', 'exists:users,id'],
             'approver_id' => ['nullable', 'integer', 'exists:approvers,id'],
@@ -29,8 +30,12 @@ class PlaceUpdateRequest extends FormRequest
             'street_id' => ['nullable', 'integer', 'exists:streets,id'],
             'title' => ['required', 'string'],
             'address' => ['nullable', 'string'],
+            'city' => ['required', 'string'],
+            'neighborhood' => ['required', 'string'],
+            'country' => ['nullable', 'string'],
+
             'email' => ['nullable', 'email'],
-            'phone' => ['nullable', 'string'],
+            'phone' => ['required', 'string'],
             'phone_secondary' => ['nullable', 'string'],
             'phone_tertiary' => ['nullable', 'string'],
             'website' => ['nullable', 'string'],
@@ -40,7 +45,7 @@ class PlaceUpdateRequest extends FormRequest
             'type_service' => ['nullable', 'string'],
             'type_amenity' => ['nullable', 'string'],
             'status' => ['required', 'string'],
-            'reservation_required' => ['nullable', 'string'],
+            'reservation_required' => ['required', 'in:0,1',],
         ];
     }
 }

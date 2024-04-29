@@ -46,7 +46,7 @@ class PlaceController extends Controller
 
 
 
-        return redirect()->route('places.index')->with('success', __('label.model_created'));
+        return redirect()->route('places.edit', $place->id)->with('success', __('label.model_created'));
     }
 
     public function show(Request $request, Place $place): View
@@ -56,16 +56,22 @@ class PlaceController extends Controller
 
     public function edit(Request $request, Place $place): View
     {
-        return view('place.edit', compact('place'));
+        // -- Add edit_place_general as global variable or constant
+        $current_page = $request->get('current_page', 'place_edit_general');
+
+        return view('place.edit', compact('place', 'current_page'));;
     }
 
     public function update(PlaceUpdateRequest $request, Place $place): RedirectResponse
     {
-        $place->update($request->validated());
 
-        $request->session()->flash('place.id', $place->id);
+        $place->update(
+            $request->validated()
 
-        return redirect()->route('places.index');
+        );
+
+
+        return redirect()->route('places.edit', $place->id)->with('success', __('label.model_updated'));
     }
 
     public function destroy(Request $request, Place $place): RedirectResponse

@@ -30,8 +30,8 @@ class Place extends Model implements HasMedia
         'published' => 'Publié',
     ];
     public const RESERVATION_REQUIRED = [
-        '0' => 'Non',
         '1' => 'Oui',
+        '0' => 'Non',
     ];
 
     /**
@@ -48,9 +48,15 @@ class Place extends Model implements HasMedia
 
 
         'street_id',
+
         'title',
         'slug',
         'address',
+
+        'city',
+        'neighborhood',
+        'country',
+
         'email',
         'phone',
         'phone_secondary',
@@ -76,7 +82,7 @@ class Place extends Model implements HasMedia
         'owner_id' => 'integer',
         'approver_id' => 'integer',
         'street_id' => 'integer',
-        'reservation_required' => 'boolean',
+        // 'reservation_required' => 'boolean',
     ];
 
     public function openingHours(): HasMany

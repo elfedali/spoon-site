@@ -93,10 +93,10 @@ return [
     // # m
     'menu-categories' => 'Catégories de menu',
     'menu-items' => 'Éléments de menu',
-    'model_created' => 'Le modèle a été créé avec succès',
-    'model_deleted' => 'Le modèle a été supprimé avec succès',
-    'model_restored' => 'Le modèle a été restauré avec succès',
-    'model_updated' => 'Le modèle a été mis à jour avec succès',
+    'model_created' => 'Mise à jour appliquée avec succès',
+    'model_deleted' => 'Suppression appliquée avec succès',
+    'model_restored' => 'Restauration appliquée avec succès',
+    'model_updated' => 'Mise à jour appliquée avec succès',
     'more' => 'Plus',
 
     // # n
@@ -124,7 +124,7 @@ return [
     'pings' => 'Pings',
     'phone_help' => 'Veuillez entrer un numéro de téléphone valide',
     'place_service' => 'Type de service',
-    'place_kitchen' => 'Type de Cuisine',
+    'place_kitchen' => 'Type de cuisine',
 
 
     // # r
@@ -134,7 +134,7 @@ return [
     'reset' => 'Réinitialiser',
     'reservations' => 'Réservations',
     'reviews' => 'Avis',
-    'reservation_required' => 'Votre place peut recevoir sans réservation par téléphone ?*',
+    'reservation_required' => 'Votre restaurant peut recevoir sans réservation par téléphone ?*',
     'role' => 'Rôle',
     'roles' => 'Rôles',
 

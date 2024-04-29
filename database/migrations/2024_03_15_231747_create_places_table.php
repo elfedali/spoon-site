@@ -25,9 +25,14 @@ return new class extends Migration
             $table->foreignId('street_id')->nullable()->constrained();
             $table->string('title');
             $table->string('slug')->unique();
+
             $table->string('address')->nullable();
+            $table->string('city')->nullable();
+            $table->string('neighborhood')->nullable();
+            $table->string('country')->nullable()->default('Maroc');
+
             $table->string('email')->nullable();
-            $table->string('phone')->nullable();
+            $table->string('phone');
             $table->string('phone_secondary')->nullable();
             $table->string('phone_tertiary')->nullable();
             $table->string('website')->nullable();

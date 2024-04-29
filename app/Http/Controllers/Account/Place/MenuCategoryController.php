@@ -21,7 +21,10 @@ class MenuCategoryController extends Controller
                 $query->ordered(); // Apply the scope to order menu items
             }]);
         }]);
-        return view('menuCategory.index', compact('place'));
+
+        $current_page = $request->get('current_page', 'place_edit_menu');
+
+        return view('menuCategory.index', compact('place', 'current_page'));
     }
 
     public function create(Request $request): View

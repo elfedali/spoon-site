@@ -35,8 +35,8 @@ class OpeningHourController extends Controller
             ]);
         dump($openingHours);
         // save it to opening_hours filed as serialised array
-
-        return view('place.openingHour.index', compact('place'));
+        $current_page = $request->get('current_page', 'place_edit_opening_hours');
+        return view('place.openingHour.index', compact('place', 'current_page', 'openingHours'));
     }
 
 

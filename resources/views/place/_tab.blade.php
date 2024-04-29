@@ -1,48 +1,58 @@
 @php
-    $active_classes =
-        'text-blue-600  border-blue-600 dark:text-blue-500 dark:border-blue-500 hover:text-blue-600 hover:border-blue-600';
+    // Define the active class based on the current page
+    $active_class = 'hover:text-primary hover:border-primary';
 
+    // Check the current page and update the active class accordingly
+    switch ($current_page) {
+        case 'place_edit_general':
+            $active_class = 'text-primary border-primary';
+            break;
+        case 'place_edit_menu':
+            $active_class = 'text-primary border-primary';
+            break;
+        case 'place_edit_gallery':
+            $active_class = 'text-primary border-primary';
+            break;
+        case 'place_edit_opening_hours':
+            $active_class = 'text-primary border-primary';
+            break;
+        default:
+            $active_class = 'hover:text-primary hover:border-primary';
+            break;
+    }
 @endphp
 
-
-<section
-    class="text-sm font-medium text-center text-gray-500 border-b border-gray-200 dark:text-gray-400 dark:border-gray-700 mb-5">
+<section class="text-md font-medium text-gray-500">
     <ul class="flex flex-wrap -mb-px">
         <li class="me-2">
             <a href="{{ route('places.edit', ['place' => $place->id]) }}"
-                class="inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
-                :class="{ '{{ $active_classes }}': page === 'places-index' }">
+                class="inline-block p-3.5 border-b-2 border-transparent rounded-t-lg {{ $current_page == 'place_edit_general' ? $active_class : '' }}">
                 Général
             </a>
         </li>
         <li class="me-2">
             <a href="{{ route('places.menu.index', ['place' => $place->id]) }}"
-                class="inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
-                :class="{ '{{ $active_classes }}': page === 'places-menu-index' }">
+                class="inline-block p-3.5 border-b-2 border-transparent rounded-t-lg {{ $current_page == 'place_edit_menu' ? $active_class : '' }}">
                 Menu
             </a>
         </li>
         <li class="me-2">
             <a href="{{ route('places.gallery.index', ['place' => $place->id]) }}"
-                class="inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
-                :class="{ '{{ $active_classes }}': page === 'places-gallery-index' }">
+                class="inline-block p-3.5 border-b-2 border-transparent rounded-t-lg {{ $current_page == 'place_edit_gallery' ? $active_class : '' }}">
                 Galerie
             </a>
         </li>
-
         <li class="me-2">
             <a href="{{ route('places.opening-hours.index', ['place' => $place->id]) }}"
-                class="inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
-                :class="{ '{{ $active_classes }}': page === 'places-opening-hours-index' }">
-
+                class="inline-block p-3.5 border-b-2 border-transparent rounded-t-lg {{ $current_page == 'place_edit_opening_hours' ? $active_class : '' }}">
                 Horaires
             </a>
         </li>
         <li>
-            <a class="inline-block p-4 text-gray-400 rounded-t-lg cursor-not-allowed dark:text-gray-500">
+            <a class="inline-block p-3.5 text-gray-400 rounded-t-lg cursor-not-allowed dark:text-gray-500">
                 Commentaires
             </a>
-            <a class="inline-block p-4 text-gray-400 rounded-t-lg cursor-not-allowed dark:text-gray-500">
+            <a class="inline-block p-3.5 text-gray-400 rounded-t-lg cursor-not-allowed dark:text-gray-500">
                 Réservations
             </a>
         </li>

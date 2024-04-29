@@ -168,7 +168,10 @@ return [
     |
     */
 
-    'attributes' => []
+    'attributes' => [
+        'title' => 'nom ',
+        'phone' => 'Numéro de téléphone',
+    ]
 
 
 

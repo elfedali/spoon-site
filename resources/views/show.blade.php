@@ -40,25 +40,22 @@
 
     <main class="container px-10">
 
-        @foreach ($places as $place)
-            <article class="bg-gray-300 p-5 mb-4 rounded my-10">
-                <h1>
-                    <a href="{{ route('details', $place) }}"
-                        class="text-2xl font-semibold text-gray-800 dark:text-gray-200 leading-tight">
 
-                        {{ $place->title }}
-                    </a>
-                </h1>
-                </a>
-                <div>
-                    {{-- getMedia --}}
-                    @foreach ($place->getMedia('gallery') as $image)
-                        <img class="w-120 h-80 object-cover object-center" src="{{ $image->getUrl() }}" alt="">
-                    @endforeach
+        <article class="bg-gray-300 p-5 mb-4 rounded my-10">
+            <h1>
 
-                </div>
-            </article>
-        @endforeach
+                {{ $place->title }}
+            </h1>
+            </a>
+            <div>
+                {{-- getMedia --}}
+                @foreach ($place->getMedia('gallery') as $image)
+                    <img class="w-120 h-80 object-cover object-center" src="{{ $image->getUrl() }}" alt="">
+                @endforeach
+
+            </div>
+        </article>
+
     </main>
 
 </body>

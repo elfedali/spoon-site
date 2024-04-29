@@ -11,8 +11,17 @@ export default {
 
     theme: {
         extend: {
+            colors: {
+                primary: "#4437df",
+                secondary: "#6c757d",
+                success: "#28a745",
+                info: "#17a2b8",
+                warning: "#ffc107",
+                danger: "#dc3545",
+                bodyLight: "#f1f1f5",
+            },
             fontFamily: {
-                sans: ["Figtree", ...defaultTheme.fontFamily.sans],
+                sans: ["Inter", "figtree", ...defaultTheme.fontFamily.sans],
             },
             fontSize: {
                 "title-xxl": ["44px", "55px"],
@@ -168,9 +177,7 @@ export default {
             opacity: {
                 65: ".65",
             },
-            backgroundImage: {
-                video: "url('../images/video/video.png')",
-            },
+
             content: {
                 "icon-copy": 'url("../images/icon/icon-copy-alt.svg")',
             },
