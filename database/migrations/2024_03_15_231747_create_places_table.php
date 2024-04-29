@@ -38,9 +38,7 @@ return new class extends Migration
             $table->string('website')->nullable();
             $table->text('description')->nullable();
             $table->text('excerpt')->nullable();
-            $table->string('type_cuisine')->nullable();
-            $table->string('type_service')->nullable();
-            $table->string('type_amenity')->nullable();
+
             $table->string('status')->default('pending');
             $table->boolean('reservation_required')->default(false);
             //opening_hours

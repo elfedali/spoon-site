@@ -168,10 +168,7 @@ return [
     |
     */
 
-    'attributes' => [
-        'title' => 'nom ',
-        'phone' => 'Numéro de téléphone',
-    ]
+    'attributes' => []
 
 
 

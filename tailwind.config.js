@@ -182,9 +182,7 @@ export default {
                 "icon-copy": 'url("../images/icon/icon-copy-alt.svg")',
             },
             transitionProperty: { width: "width", stroke: "stroke" },
-            borderWidth: {
-                6: "6px",
-            },
+
             boxShadow: {
                 default: "0px 8px 13px -3px rgba(0, 0, 0, 0.07)",
                 card: "0px 1px 3px rgba(0, 0, 0, 0.12)",

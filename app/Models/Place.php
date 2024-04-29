@@ -46,7 +46,6 @@ class Place extends Model implements HasMedia
         'place_service',
         'place_kitchen',
 
-
         'street_id',
 
         'title',
@@ -64,9 +63,7 @@ class Place extends Model implements HasMedia
         'website',
         'description',
         'excerpt',
-        'type_cuisine',
-        'type_service',
-        'type_amenity',
+
         'status',
         'reservation_required',
         'opening_hours'
