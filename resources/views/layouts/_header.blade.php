@@ -28,9 +28,16 @@
                 </span>
             </button>
             <!-- Hamburger Toggle BTN -->
-            <a class="block flex-shrink-0 lg:hidden" href="index.html">
-                <img src="./images/logo/logo-icon.svg" alt="Logo" />
+
+
+            <a href="{{ route('dashboard') }}" class="block flex-shrink-0 lg:hidden">
+                @if (auth()->user()->hasRole('SuperAdmin'))
+                    <img src="{{ asset('images/logo-superadmin.svg') }}" alt="logo" class="block h-8 w-auto">
+                @else
+                    <img src="{{ asset('images/logo-owner.svg') }}" alt="logo" class="block h-8 w-auto">
+                @endif
             </a>
+
         </div>
         <div class="hidden sm:block">
             <form action="https://formbold.com/s/unique_form_id" method="POST">

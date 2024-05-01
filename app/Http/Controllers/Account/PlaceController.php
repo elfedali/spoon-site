@@ -40,11 +40,21 @@ class PlaceController extends Controller
 
     public function store(PlaceStoreRequest $request): RedirectResponse
     {
-        //dd($request->validated());
+
 
         $place = Place::create($request->validated());
 
+        $pk = json_decode($request->place_kitchen, true);
+        $ps = json_decode($request->place_service, true);
+        // Extract the term IDs from the decoded arrays
+        $pkTermIds = array_column($pk, 'id');
+        $psTermIds = array_column($ps, 'id');
 
+        // Merge the term IDs from both arrays
+        $mergedTermIds = array_merge($pkTermIds, $psTermIds);
+
+        // Sync the merged term IDs with the place
+        $place->terms()->sync($mergedTermIds);
 
         return redirect()->route('places.edit', $place->id)->with('success', __('label.model_created'));
     }
@@ -70,6 +80,18 @@ class PlaceController extends Controller
 
         );
 
+
+        $pk = json_decode($request->place_kitchen, true);
+        $ps = json_decode($request->place_service, true);
+        // Extract the term IDs from the decoded arrays
+        $pkTermIds = array_column($pk, 'id');
+        $psTermIds = array_column($ps, 'id');
+
+        // Merge the term IDs from both arrays
+        $mergedTermIds = array_merge($pkTermIds, $psTermIds);
+
+        // Sync the merged term IDs with the place
+        $place->terms()->sync($mergedTermIds);
 
         return redirect()->route('places.edit', $place->id)->with('success', __('label.model_updated'));
     }

@@ -66,6 +66,8 @@ return [
     'featured' => 'En vedette',
     'phone_secondary' => 'Téléphone secondaire',
     'phone_tertiary' => 'Téléphone tertiaire',
+    'field_required' => 'Champ oblilgatoire',
+    'this_field_is_required' => 'Ce champ est oblilgatoire',
 
     // # h
     'home' => 'Accueil',
@@ -137,6 +139,7 @@ return [
     'reservation_required' => 'Votre restaurant peut recevoir sans réservation par téléphone ?*',
     'role' => 'Rôle',
     'roles' => 'Rôles',
+    'required' => 'Obligatoire',
 
     // # s
     'salles' => 'Salles',

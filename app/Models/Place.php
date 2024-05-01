@@ -43,8 +43,8 @@ class Place extends Model implements HasMedia
         'owner_id',
         'approver_id',
         // 'place_type',
-        'place_service',
-        'place_kitchen',
+        // 'place_service',
+        // 'place_kitchen',
 
         'street_id',
 
@@ -164,5 +164,10 @@ class Place extends Model implements HasMedia
     public function setReservationRequiredAttribute($value)
     {
         $this->attributes['reservation_required'] = $value === 'on' ? 1 : 0;
+    }
+
+    public function terms()
+    {
+        return $this->belongsToMany(Term::class);
     }
 }

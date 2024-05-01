@@ -84,5 +84,8 @@ class DatabaseSeeder extends Seeder
 
         // place
         // \App\Models\Place::factory(10)->create();
+
+        // terms 
+        $this->call(TermSeeder::class);
     }
 }

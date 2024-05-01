@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Term;
 use Illuminate\Foundation\Http\FormRequest;
 
 class PlaceUpdateRequest extends FormRequest
@@ -19,13 +20,25 @@ class PlaceUpdateRequest extends FormRequest
      */
     public function rules(): array
     {
-        // dd($this->all());
+        //dd($this->all());
         return [
             'owner_id' => ['required', 'integer', 'exists:users,id'],
-            'approver_id' => ['nullable', 'integer', 'exists:approvers,id'],
-            // 'place_type' => ['required', 'in:place,cafe,spa'],
-            'place_service' => ['required', 'string'],
-            'place_kitchen' => ['required', 'string'],
+            // 'approver_id' => ['nullable', 'integer', 'exists:users,id'],
+
+
+            'place_kitchen' => ['required', 'json', function ($attribute, $value, $fail) {
+                if (empty(json_decode($value))) {
+                    $fail("Ce champ est obligatoire.");
+                }
+            }],
+            'place_service' => ['required', 'json', function ($attribute, $value, $fail) {
+                if (empty(json_decode($value))) {
+                    $fail("Ce champ est obligatoire.");
+                }
+            }],
+            'place_kitchen.*.id' => ['required', 'integer', 'exists:terms,id'],
+            'place_service.*.id' => ['required', 'integer', 'exists:terms,id'],
+
 
             'street_id' => ['nullable', 'integer', 'exists:streets,id'],
             'title' => ['required', 'string'],
