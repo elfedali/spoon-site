@@ -10,30 +10,32 @@
         ->select('id', 'name')
         ->get()
         ->toArray();
+    $place__terms_service = [];
+    $place__terms_kitchen = [];
 
-    $place__terms_service = $place->terms
-        ->where('taxonomy', \App\Models\Term::TYPE_SERVICE)
-        ->map(function ($term) {
-            return [
-                'id' => $term->id,
-                'name' => $term->name,
-            ];
-        })
-        ->values()
-        ->toArray();
+    if (isset($place)) {
+        $place__terms_service = $place->terms
+            ->where('taxonomy', \App\Models\Term::TYPE_SERVICE)
+            ->map(function ($term) {
+                return [
+                    'id' => $term->id,
+                    'name' => $term->name,
+                ];
+            })
+            ->values()
+            ->toArray();
 
-    $place__terms_kitchen = $place->terms
-        ->where('taxonomy', \App\Models\Term::TYPE_KITCHEN)
-        ->map(function ($term) {
-            return [
-                'id' => $term->id,
-                'name' => $term->name,
-            ];
-        })
-        ->values()
-        ->toArray();
-
-    //dd($place__terms_kitchen, $place__terms_service);
+        $place__terms_kitchen = $place->terms
+            ->where('taxonomy', \App\Models\Term::TYPE_KITCHEN)
+            ->map(function ($term) {
+                return [
+                    'id' => $term->id,
+                    'name' => $term->name,
+                ];
+            })
+            ->values()
+            ->toArray();
+    }
 
 @endphp
 {{-- title --}}
@@ -94,52 +96,31 @@
             @endif
         </div>
 
-        <div class="relative">
-            <input type="text" id="floating_outlined"
-                class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                placeholder=" " />
-            <label for="floating_outlined"
-                class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Floating
-                outlined</label>
-        </div>
+
         {{ html()->label(__('label.phone'), 'phone')->class('form-label') }}
         <section class="grid grid-cols-1 xl:grid-cols-3 xl:gap-3 mb-4">
             <div class="form-group">
-                {{ html()->text('phone')->placeholder(__('label.phone'))->class('form-control ' . ($errors->has('phone') ? 'border border-red-500' : ''))->type('tel') }}
-                {{-- error --}}
-                @if ($errors->has('phone'))
-                    <div class="text-red-500 text-xs mt-1">
-                        {{ $errors->first('phone') }}
-                    </div>
-                @endif
+                <x-input-floating-outlined name="phone" label="{{ __('label.phone_1') }}" :value="$place->phone ?? ''"
+                    :has_errors="$errors->has('phone') ? true : false" :required="true"></x-input-floating-outlined>
+
             </div>
             {{-- phone_secondary --}}
             <div class="form-group">
 
-                {{ html()->text('phone_secondary')->placeholder(__('label.phone_secondary'))->class('form-control ' . ($errors->has('phone_secondary') ? 'border border-red-500' : ''))->type('tel') }}
-                {{-- error --}}
-                @if ($errors->has('phone_secondary'))
-                    <div class="text-red-500 text-xs mt-1">
-                        {{ $errors->first('phone_secondary') }}
-                    </div>
-                @endif
+                <x-input-floating-outlined name="phone_secondary" label="{{ __('label.phone_secondary') }}"
+                    :value="$place->phone_secondary ?? ''" :has_errors="$errors->has('phone_secondary') ? true : false"></x-input-floating-outlined>
             </div>
             {{-- phone_tertiary --}}
             <div class="form-group">
 
-                {{ html()->text('phone_tertiary')->placeholder(__('label.phone_tertiary'))->class('form-control ' . ($errors->has('phone_tertiary') ? 'border border-red-500' : ''))->type('tel') }}
-                {{-- error --}}
-                @if ($errors->has('phone_tertiary'))
-                    <div class="text-red-500 text-xs mt-1">
-                        {{ $errors->first('phone_tertiary') }}
-                    </div>
-                @endif
+                <x-input-floating-outlined name="phone_tertiary" label="{{ __('label.phone_tertiary') }}"
+                    :value="$place->phone_tertiary ?? ''" :has_errors="$errors->has('phone_tertiary') ? true : false"></x-input-floating-outlined>
             </div>
         </section>
 
         <div class="mb-5">
-            {{ html()->label(__('label.address'), 'address')->class('form-label') }}
-            {{ html()->text('address')->class('form-control ' . ($errors->has('address') ? 'border border-red-500' : '')) }}
+            {{ html()->label(__('label.address_restaurant'), 'address')->class('form-label') }}
+            {{ html()->text('address')->class('form-control ' . ($errors->has('address') ? 'border border-red-500' : ''))->placeholder(__('label.address_restaurant_placeholder')) }}
             {{-- error --}}
             @if ($errors->has('address'))
                 <div class="text-red-500 text-xs mt-1">

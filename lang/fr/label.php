@@ -9,6 +9,8 @@ return [
     'attachments' => 'Pièces jointes',
     'all' => 'Tous',
     'address' => 'Adresse',
+    'address_restaurant' => 'Adresse du restaurant',
+    'address_restaurant_placeholder' => 'Nom de l\'adresse',
     'add_dish' => 'Ajouter un plat',
 
     // # b
@@ -64,8 +66,8 @@ return [
     'filter' => 'Filtrer',
     'forward' => 'Transférer',
     'featured' => 'En vedette',
-    'phone_secondary' => 'Téléphone secondaire',
-    'phone_tertiary' => 'Téléphone tertiaire',
+    'phone_secondary' => 'Téléphone 2',
+    'phone_tertiary' => 'Téléphone 3',
     'field_required' => 'Champ oblilgatoire',
     'this_field_is_required' => 'Ce champ est oblilgatoire',
 
@@ -116,6 +118,7 @@ return [
     'payments' => 'Paiements',
     'permissions' => 'Permissions',
     'phone' => 'Téléphone',
+    'phone_1' => 'Téléphone 1',
     'places' => 'Restaurants',
     'posts' => 'Articles',
     'preview' => 'Aperçu',

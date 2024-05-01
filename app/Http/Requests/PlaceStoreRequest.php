@@ -23,6 +23,20 @@ class PlaceStoreRequest extends FormRequest
             'owner_id' => ['nullable', 'integer', 'exists:users,id'], # TODO: remove nullable
             'approver_id' => ['nullable', 'integer', 'exists:users,id'],
 
+            'place_kitchen' => ['required', 'json', function ($attribute, $value, $fail) {
+                if (empty(json_decode($value))) {
+                    $fail('Le type de cuisine est obligatoire');
+                }
+            }],
+            'place_service' => ['required', 'json', function ($attribute, $value, $fail) {
+                if (empty(json_decode($value))) {
+                    $fail(
+                        'Le type de service est obligatoire'
+                    );
+                }
+            }],
+            'place_kitchen.*.id' => ['required', 'integer', 'exists:terms,id'],
+            'place_service.*.id' => ['required', 'integer', 'exists:terms,id'],
 
             'street_id' => ['nullable', 'integer', 'exists:streets,id'],
             'title' => ['required', 'string'],

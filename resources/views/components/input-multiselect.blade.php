@@ -68,5 +68,5 @@
         </template>
     </div>
 
-    <input type="hidden" name="{{ $inputName }}" :value="JSON.stringify(selected)">
+    <input type="hidden" name="{{ $inputName }}" :value="JSON.stringify(selected)" value="{{ old($inputName) }}"">
 </section>
