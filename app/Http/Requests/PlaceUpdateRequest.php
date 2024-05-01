@@ -28,12 +28,14 @@ class PlaceUpdateRequest extends FormRequest
 
             'place_kitchen' => ['required', 'json', function ($attribute, $value, $fail) {
                 if (empty(json_decode($value))) {
-                    $fail("Ce champ est obligatoire.");
+                    $fail('Le type de cuisine est obligatoire');
                 }
             }],
             'place_service' => ['required', 'json', function ($attribute, $value, $fail) {
                 if (empty(json_decode($value))) {
-                    $fail("Ce champ est obligatoire.");
+                    $fail(
+                        'Le type de service est obligatoire'
+                    );
                 }
             }],
             'place_kitchen.*.id' => ['required', 'integer', 'exists:terms,id'],

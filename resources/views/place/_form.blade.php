@@ -52,10 +52,14 @@
             @endif
 
         </div>
-
+        @php
+            $kitchen_has_errors = $errors->has('place_kitchen') ? true : false;
+            $service_has_errors = $errors->has('place_service') ? true : false;
+        @endphp
         <div class="mb-5">
             {{ html()->label(__('label.place_kitchen') . '<span class="text-red-500">*</span>', 'place_kitchen')->class('form-label') }}
-            <x-input-multiselect :tags="$terms_kitchens" inputName="place_kitchen" :selectedTags="$place__terms_kitchen"></x-input-multiselect>
+            <x-input-multiselect :tags="$terms_kitchens" inputName="place_kitchen" :selectedTags="$place__terms_kitchen"
+                :has_errors="$kitchen_has_errors"></x-input-multiselect>
             {{-- error --}}
             @if ($errors->has('place_kitchen'))
                 <div class="text-red-500 text-xs mt-1">
@@ -65,7 +69,8 @@
         </div>
         <div class="mb-5">
             {{ html()->label(__('label.place_service') . '<span class="text-red-500">*</span>', 'place_service')->class('form-label') }}
-            <x-input-multiselect :tags="$terms_services" inputName="place_service" :selectedTags="$place__terms_service"></x-input-multiselect>
+            <x-input-multiselect :tags="$terms_services" inputName="place_service" :selectedTags="$place__terms_service"
+                :has_errors="$service_has_errors"></x-input-multiselect>
             {{-- error --}}
             @if ($errors->has('place_service'))
                 <div class="text-red-500 text-xs mt-1">

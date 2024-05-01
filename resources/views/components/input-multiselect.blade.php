@@ -1,4 +1,4 @@
-@props(['tags', 'selectedTags', 'inputName'])
+@props(['tags', 'selectedTags', 'inputName', 'has_errors' => false])
 @php
     $tagsNotUsed = $tags;
 
@@ -33,7 +33,7 @@
 
 
 }" x-init="console.log(availableTags)"
-    class="relative border border-gray-300 rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300  focus:border-primary w-full p-1 text-sm"
+    class="relative border {{ $has_errors ? 'border-red-500 ' : 'border-gray-300 ' }}rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300  focus:border-primary w-full p-1 text-sm"
     @click.away="open = false" x-on:click="open = true; $refs.searchQuery.focus()">
 
     <template x-for="(selectedTag, index) in selected" :key="index">

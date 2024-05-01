@@ -22,9 +22,7 @@ class PlaceStoreRequest extends FormRequest
         return [
             'owner_id' => ['nullable', 'integer', 'exists:users,id'], # TODO: remove nullable
             'approver_id' => ['nullable', 'integer', 'exists:users,id'],
-            // 'place_type' => ['required', 'in:place,cafe,spa'],
-            // 'place_service' => ['requied',],
-            // 'place_kitchen' => ['required',],
+
 
             'street_id' => ['nullable', 'integer', 'exists:streets,id'],
             'title' => ['required', 'string'],
