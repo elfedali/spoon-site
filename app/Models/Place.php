@@ -79,7 +79,7 @@ class Place extends Model implements HasMedia
         'owner_id' => 'integer',
         'approver_id' => 'integer',
         'street_id' => 'integer',
-        // 'reservation_required' => 'boolean',
+        'reservation_required' => 'boolean',
     ];
 
     public function openingHours(): HasMany
@@ -160,11 +160,7 @@ class Place extends Model implements HasMedia
     }
 
 
-    // on save change the 'on' reservation_required to 1
-    public function setReservationRequiredAttribute($value)
-    {
-        $this->attributes['reservation_required'] = $value === 'on' ? 1 : 0;
-    }
+
 
     public function terms()
     {

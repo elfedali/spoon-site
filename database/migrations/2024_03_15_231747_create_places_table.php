@@ -40,7 +40,7 @@ return new class extends Migration
             $table->text('excerpt')->nullable();
 
             $table->string('status')->default('pending');
-            $table->boolean('reservation_required')->default(false);
+            $table->boolean('reservation_required');
             //opening_hours
             $table->string('opening_hours')->nullable();
 

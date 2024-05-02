@@ -162,24 +162,51 @@
                 @endif
             </div>
         </section>
-        {{-- Todo: check this is the right in store, edit & update --}}
+
         <div class="mb-5">
-            <div class="bg-gray-50 p-3 rounded">
-                {{ html()->label(__('label.reservation_required'), 'reservation_required')->class('form-label') }}
-                <div class="flex items-center gap-4 ">
-                    @foreach ($reservation_required as $key => $value)
-                        <label class="inline-flex items-center">
-                            {{ html()->radio('reservation_required', $key)->value($key)->class('form-radio rounded-md shadow-sm') }}
-                            <span class="ml-2 text-gray-700 dark:text-gray-200">{{ $value }}</span>
-                        </label>
-                    @endforeach
+            @php
+                $reservationRequired = isset($place) ? $place->reservation_required : null;
+            @endphp
+
+            <section
+                class="bg-gray-50 p-3 rounded-lg border border-gray-100 {{ $errors->has('reservation_required') ? 'border-red-500' : '' }}">
+                {{ html()->label(__('label.reservation_table') . '<span class="text-red-500"> *</span>', 'reservation_required')->class('form-label mb-1') }}
+
+                <p class="mb-4">
+                    {{ __('label.reservation_required') }}
+                </p>
+
+                <div class="flex items-center mb-3">
+                    <input {{ $reservationRequired === false ? 'checked' : '' }} id="reservation_required-1"
+                        type="radio" value="false" name="reservation_required"
+                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                    <label for="reservation_required-1"
+                        class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                        Non, réservation non nécessaire
+                    </label>
                 </div>
-            </div>
+                <div class="flex items-center">
+                    <input {{ $reservationRequired === true ? 'checked' : '' }} id="reservation_required-2"
+                        type="radio" value="true" name="reservation_required"
+                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                    <label for="reservation_required-2"
+                        class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                        Oui, réservation nécessaire
+                    </label>
+                </div>
+                @if ($errors->has('reservation_required'))
+                    <div class="text-red-500 text-xs mt-4">
+                        {{ $errors->first('reservation_required') }}
+                    </div>
+                @endif
+            </section>
         </div>
+
 
     </div>
     <!-- /.col-span-2 -->
     <div class="col-span-1">
+
         {{-- <div class="mb-5">
             {{ html()->label(__('label.owner'), 'owner_id')->class('form-label') }}
             {{ html()->select('owner_id', $owners)->class('form-control') }}

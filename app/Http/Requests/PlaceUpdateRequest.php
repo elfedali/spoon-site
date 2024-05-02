@@ -20,7 +20,7 @@ class PlaceUpdateRequest extends FormRequest
      */
     public function rules(): array
     {
-        //dd($this->all());
+        // dd($this->all());
         return [
             'owner_id' => ['required', 'integer', 'exists:users,id'],
             // 'approver_id' => ['nullable', 'integer', 'exists:users,id'],
@@ -60,7 +60,7 @@ class PlaceUpdateRequest extends FormRequest
             'type_service' => ['nullable', 'string'],
             'type_amenity' => ['nullable', 'string'],
             'status' => ['required', 'string'],
-            'reservation_required' => ['required', 'in:0,1',],
+            // 'reservation_required' => ['required', 'boolean'],
         ];
     }
 
@@ -88,6 +88,7 @@ class PlaceUpdateRequest extends FormRequest
             'place_service.required' => 'Le type de service est obligatoire',
             'place_kitchen.required' => 'Le type de cuisine est obligatoire',
             // Add other custom messages as needed
+            // 'reservation_required' => 'Ce champ est obligatoire',
         ];
     }
 }

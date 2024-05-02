@@ -74,12 +74,52 @@ class PlaceController extends Controller
 
     public function update(PlaceUpdateRequest $request, Place $place): RedirectResponse
     {
+        /*
+       "title" => "HAVANA STREET FOOD"
+        "place_kitchen" => "[{"id":4,"name":"Méditerranéenne"},{"id":5,"name":"Marocaine"},{"id":6,"name":"Asiatique"},{"id":8,"name":"Française"}]"
+        "place_service" => "[{"id":1,"name":"Surplace"},{"id":2,"name":"Livraison"},{"id":3,"name":"Emporter"}]"
+        "description" => "Sint officiis offici"
+        "phone" => "+1 (188) 528-6587"
+        "phone_secondary" => "+1 (813) 806-2883"
+        "phone_tertiary" => "+1 (673) 813-3689"
+        "address" => "Incidunt animi at"
+        "city" => "1"
+        "neighborhood" => "de"
+        "reservation_required" => "false"
+        "owner_id" => "1"
+        "website" => "https://www.pobori.tv"
+        "status" => "draft"
+        */
 
-        $place->update(
-            $request->validated()
+        $validatedData = $request->validated();
 
-        );
+        // Convert 'reservation_required' to a boolean
+        $reservationRequired = filter_var($request->input('reservation_required'), FILTER_VALIDATE_BOOLEAN);
 
+        //  dd($reservationRequired);
+
+        // Add 'reservation_required' field to the validated data
+        $validatedData['reservation_required'] = $reservationRequired;
+
+        // Update the place with the combined data
+        $place->title = $validatedData['title'];
+        $place->description = $validatedData['description'];
+        $place->phone = $validatedData['phone'];
+        $place->phone_secondary = $validatedData['phone_secondary'];
+        $place->phone_tertiary = $validatedData['phone_tertiary'];
+        $place->address = $validatedData['address'];
+        $place->city = $validatedData['city'];
+        $place->neighborhood = $validatedData['neighborhood'];
+        $place->reservation_required = $validatedData['reservation_required'];
+        $place->website = $validatedData['website'];
+        $place->status = $validatedData['status'];
+
+
+        $place->save();
+
+
+
+        // Sync the terms with the place
 
         $pk = json_decode($request->place_kitchen, true);
         $ps = json_decode($request->place_service, true);
