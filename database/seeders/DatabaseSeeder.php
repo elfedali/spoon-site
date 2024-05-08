@@ -87,5 +87,7 @@ class DatabaseSeeder extends Seeder
 
         // terms 
         $this->call(TermSeeder::class);
+        // city
+        $this->call(CitySeeder::class);
     }
 }

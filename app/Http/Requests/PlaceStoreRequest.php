@@ -56,7 +56,7 @@ class PlaceStoreRequest extends FormRequest
             'type_service' => ['nullable', 'string'],
             'type_amenity' => ['nullable', 'string'],
             'status' => ['required', 'string'],
-            'reservation_required' => ['required'],
+            // 'reservation_required' => ['required'],
         ];
     }
 

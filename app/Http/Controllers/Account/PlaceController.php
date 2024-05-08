@@ -40,9 +40,35 @@ class PlaceController extends Controller
 
     public function store(PlaceStoreRequest $request): RedirectResponse
     {
+        $place = new Place();
+        $validatedData = $request->validated();
+
+        // Convert 'reservation_required' to a boolean
+        $reservationRequired = filter_var($request->input('reservation_required'), FILTER_VALIDATE_BOOLEAN);
+
+        //  dd($reservationRequired);
+
+        // Add 'reservation_required' field to the validated data
+        $validatedData['reservation_required'] = $reservationRequired;
+
+        // Update the place with the combined data
+        $place->title = $validatedData['title'];
+        $place->description = $validatedData['description'];
+        $place->phone = $validatedData['phone'];
+        $place->phone_secondary = $validatedData['phone_secondary'];
+        $place->phone_tertiary = $validatedData['phone_tertiary'];
+        $place->address = $validatedData['address'];
+        $place->city = $validatedData['city'];
+        $place->neighborhood = $validatedData['neighborhood'];
+        $place->reservation_required = $validatedData['reservation_required'];
+        $place->website = $validatedData['website'];
+        $place->owner_id = $validatedData['owner_id'];
+        $place->status = $validatedData['status'];
 
 
-        $place = Place::create($request->validated());
+        $place->save();
+
+
 
         $pk = json_decode($request->place_kitchen, true);
         $ps = json_decode($request->place_service, true);

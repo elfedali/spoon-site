@@ -1,5 +1,5 @@
 @php
-    $cities = ['Casablanca', 'Mohammedia', 'Rabat', 'Fès', 'Tanger', 'Marrakech', 'Sale'];
+    // $cities = ['Casablanca', 'Mohammedia', 'Rabat', 'Fès', 'Tanger', 'Marrakech', 'Sale'];
     $terms_services = \App\Models\Term::where('taxonomy', \App\Models\Term::TYPE_SERVICE)
         #->orderBy('name')
         ->select('id', 'name')
@@ -37,6 +37,12 @@
             ->toArray();
     }
 
+    // cities
+    $cities = \App\Models\City::select('id', 'name')->get()->toArray();
+    $options_city = []; //['name'],
+    foreach ($cities as $key => $city) {
+        $options_city[$city['id']] = $city['name'];
+    }
 @endphp
 {{-- title --}}
 
@@ -128,11 +134,12 @@
                 </div>
             @endif
         </div>
-        <section class="grid grid-cols-1 xl:grid-cols-3 xl:gap-3 my-4">
+        <section class="grid grid-cols-1 xl:grid-cols-3 xl:gap-3 my-4" x-data="app()">
             {{-- city --}}
+
             <div class="mb-5">
                 {{ html()->label(__('label.city') . ' *', 'city')->class('form-label') }}
-                {{ html()->select('city', $cities)->class('form-control ' . ($errors->has('city') ? 'border border-red-500' : '')) }}
+                {{ html()->select('city', $options_city)->class('form-control')->attributes(['x-on:change' => 'updateNeighborhoods($event.target.value)']) }}
                 {{-- error --}}
                 @if ($errors->has('city'))
                     <div class="text-red-500 text-xs mt-1">
@@ -142,14 +149,21 @@
             </div>
             <div class="mb-5">
                 {{ html()->label(__('label.neighborhood'), 'neighborhood')->class('form-label') }}
-                {{ html()->text('neighborhood')->class('form-control ' . ($errors->has('neighborhood') ? 'border border-red-500' : '')) }}
-                {{-- error   --}}
+                {{-- {{ html()->select('neighborhood', [])->class('form-control')->attributes(['x-model' => 'selectedNeighborhood']) }} --}}
+                <select name="neighborhood" id="">
+                    <template x-for="neighborhood in neighborhoods" :key="neighborhood.id">
+                        <option :value="neighborhood.id" x-text="neighborhood.name"></option>
+                        {{-- <option :value="neighborhood.id" x-text="neighborhood.name"></option> --}}
+                    </template>
+                </select>
+                {{-- error --}}
                 @if ($errors->has('neighborhood'))
                     <div class="text-red-500 text-xs mt-1">
                         {{ $errors->first('neighborhood') }}
                     </div>
                 @endif
             </div>
+
             {{-- country --}}
             <div class="mb-5">
                 {{ html()->label(__('label.country'), 'country')->class('form-label') }}
@@ -246,3 +260,29 @@
     <!-- /.col-span-1 -->
 
 </section>
+
+<script>
+    function app() {
+        return {
+            neighborhoods: [],
+            selectedNeighborhood: null,
+            updateNeighborhoods(cityId) {
+                fetch('/api/streets/' + cityId)
+                    .then(response => response.json())
+                    .then(data => {
+                        this.neighborhoods = data;
+                        this.selectedNeighborhood = null; // Reset selected neighborhood
+                        console.log(this.neighborhoods);
+                    });
+            }
+        }
+    }
+</script>
+
+@push('scripts')
+    <script>
+        window.addEventListener('load', () => {
+            Alpine.bind('body');
+        });
+    </script>
+@endpush
