@@ -50,7 +50,7 @@ class DatabaseSeeder extends Seeder
         // Create a user
         $user = User::factory()->create([
             'name' => 'Webmaster',
-            'email' => 'webmaster@spoon.ma',
+            'email' => 'webmaster@restoly.ma',
         ]);
 
         // Assign SuperAdmin role to the user
@@ -63,16 +63,16 @@ class DatabaseSeeder extends Seeder
 
         $userM1 = User::factory()->create([
             'name' => 'Manager1',
-            'email' => 'manager1@spoon.ma',
+            'email' => 'manager1@restoly.ma',
         ]);
         $userM2 = User::factory()->create([
             'name' => 'Manager2',
-            'email' => 'manager2@spoon.ma',
+            'email' => 'manager2@restoly.ma',
         ]);
 
         $userM3 = User::factory()->create([
             'name' => 'Manager3',
-            'email' => 'manager3@spoon.ma',
+            'email' => 'manager3@restoly.ma',
         ]);
         $userM1->assignRole($managerRole);
         $userM2->assignRole($managerRole);
