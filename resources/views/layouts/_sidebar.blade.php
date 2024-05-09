@@ -125,7 +125,8 @@
                                     page === 'places-index')
                             }"
                             :class="page === 'places-index' && 'text-gray-800'">
-                            <i class="fas fa-map-marker-alt text-lg"></i>
+                            {{-- store restaurant --}}
+                            <i class="fas fa-store-alt"></i>
 
                             {{ __('label.places') }}
                         </a>

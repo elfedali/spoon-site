@@ -43,6 +43,24 @@
     foreach ($cities as $key => $city) {
         $options_city[$city['id']] = $city['name'];
     }
+
+    // dump($place);
+    /**
+     * @var \App\Models\City
+     *
+     */
+    $selected_city = null;
+    $neighborhoods = null;
+    if (isset($place)):
+        $selected_city = \App\Models\City::where('id', $place->city ?? old('city'))->first();
+
+        $neighborhoods = $selected_city->streets->select('id', 'name')->toArray();
+        // dump($neighborhoods);
+    else:
+        $selected_city = \App\Models\City::where('id', old('city') ?? 1)->first();
+        $neighborhoods = $selected_city->streets->select('id', 'name')->toArray();
+    endif;
+
 @endphp
 {{-- title --}}
 
@@ -125,7 +143,7 @@
         </section>
 
         <div class="mb-5">
-            {{ html()->label(__('label.address_restaurant'), 'address')->class('form-label') }}
+            {{ html()->label(__('label.address_restaurant') . ' <span class="text-red-500">*</span>', 'address')->class('form-label') }}
             {{ html()->text('address')->class('form-control ' . ($errors->has('address') ? 'border border-red-500' : ''))->placeholder(__('label.address_restaurant_placeholder')) }}
             {{-- error --}}
             @if ($errors->has('address'))
@@ -138,8 +156,8 @@
             {{-- city --}}
 
             <div class="mb-5">
-                {{ html()->label(__('label.city') . ' *', 'city')->class('form-label') }}
-                {{ html()->select('city', $options_city)->class('form-control')->attributes(['x-on:change' => 'updateNeighborhoods($event.target.value)']) }}
+                {{ html()->label(__('label.city') . '  <span class="text-red-500">*</span>', 'city')->class('form-label') }}
+                {{ html()->select('city', $options_city)->class('form-control' . ($errors->has('city') ? 'border border-red-500' : ''))->attributes(['x-on:change' => 'updateNeighborhoods($event.target.value)']) }}
                 {{-- error --}}
                 @if ($errors->has('city'))
                     <div class="text-red-500 text-xs mt-1">
@@ -148,12 +166,13 @@
                 @endif
             </div>
             <div class="mb-5">
-                {{ html()->label(__('label.neighborhood'), 'neighborhood')->class('form-label') }}
+                {{ html()->label(__('label.neighborhood') . ' <span class="text-red-500">*</span>', 'neighborhood')->class('form-label') }}
                 {{-- {{ html()->select('neighborhood', [])->class('form-control')->attributes(['x-model' => 'selectedNeighborhood']) }} --}}
-                <select name="neighborhood" id="">
+                <select name="neighborhood" id="" class="form-control" x-model="selectedNeighborhood">
                     <template x-for="neighborhood in neighborhoods" :key="neighborhood.id">
-                        <option :value="neighborhood.id" x-text="neighborhood.name"></option>
-                        {{-- <option :value="neighborhood.id" x-text="neighborhood.name"></option> --}}
+                        <option :value="neighborhood.id" x-text="neighborhood.name"
+                            :selected="neighborhood.id == selectedNeighborhood"></option>
+
                     </template>
                 </select>
                 {{-- error --}}
@@ -259,25 +278,29 @@
     </div>
     <!-- /.col-span-1 -->
 
-</section>
 
+</section>
 <script>
     function app() {
         return {
-            neighborhoods: [],
-            selectedNeighborhood: null,
+            neighborhoods: @json($neighborhoods), // Set initial value from $neighborhoods
+            selectedNeighborhood: @json($place->neighborhood ?? null), // Set initial value from $place->neighborhood_id if available
             updateNeighborhoods(cityId) {
                 fetch('/api/streets/' + cityId)
                     .then(response => response.json())
                     .then(data => {
                         this.neighborhoods = data;
-                        this.selectedNeighborhood = null; // Reset selected neighborhood
-                        console.log(this.neighborhoods);
+                        // Check if the selectedNeighborhood is still available in the fetched data
+                        if (!this.neighborhoods.some(neighborhood => neighborhood.id === this
+                                .selectedNeighborhood)) {
+                            this.selectedNeighborhood = null; // Reset selected neighborhood if it's not available
+                        }
                     });
             }
         }
     }
 </script>
+
 
 @push('scripts')
     <script>

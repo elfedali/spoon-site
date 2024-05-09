@@ -44,7 +44,7 @@ class PlaceUpdateRequest extends FormRequest
 
             'street_id' => ['nullable', 'integer', 'exists:streets,id'],
             'title' => ['required', 'string'],
-            'address' => ['nullable', 'string'],
+            'address' => ['required', 'string'],
             'city' => ['required', 'string'],
             'neighborhood' => ['required', 'string'],
             'country' => ['nullable', 'string'],

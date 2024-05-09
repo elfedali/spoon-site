@@ -17,6 +17,10 @@ class PlaceController extends Controller
 
     public function index(Request $request): View
     {
+        // authorize
+
+        $this->authorize('create', Place::class);
+
         $listingView = $request->get('view', self::LISTING_VIEW);
 
         /**
@@ -35,11 +39,17 @@ class PlaceController extends Controller
 
     public function create(Request $request): View
     {
+        // authorize
+        $this->authorize('create', Place::class);
+
         return view('place.create');
     }
 
     public function store(PlaceStoreRequest $request): RedirectResponse
     {
+        //authorize
+        $this->authorize('create', Place::class);
+
         $place = new Place();
         $validatedData = $request->validated();
 
@@ -87,11 +97,14 @@ class PlaceController extends Controller
 
     public function show(Request $request, Place $place): View
     {
+        $this->authorize('view', $place);
         return view('place.show', compact('place'));
     }
 
     public function edit(Request $request, Place $place): View
     {
+        // authorize
+        $this->authorize('view', $place);
         // -- Add edit_place_general as global variable or constant
         $current_page = $request->get('current_page', 'place_edit_general');
 
@@ -100,6 +113,8 @@ class PlaceController extends Controller
 
     public function update(PlaceUpdateRequest $request, Place $place): RedirectResponse
     {
+        //authorize
+        $this->authorize('update', $place);
         /*
        "title" => "HAVANA STREET FOOD"
         "place_kitchen" => "[{"id":4,"name":"Méditerranéenne"},{"id":5,"name":"Marocaine"},{"id":6,"name":"Asiatique"},{"id":8,"name":"Française"}]"
@@ -164,6 +179,8 @@ class PlaceController extends Controller
 
     public function destroy(Request $request, Place $place): RedirectResponse
     {
+        // authorize
+        $this->authorize('delete', $place);
         $place->delete();
 
         return redirect()->route('places.index');

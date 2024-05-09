@@ -19,6 +19,7 @@ class PlaceStoreRequest extends FormRequest
      */
     public function rules(): array
     {
+        // dd($this->all());
         return [
             'owner_id' => ['nullable', 'integer', 'exists:users,id'], # TODO: remove nullable
             'approver_id' => ['nullable', 'integer', 'exists:users,id'],
@@ -40,7 +41,7 @@ class PlaceStoreRequest extends FormRequest
 
             'street_id' => ['nullable', 'integer', 'exists:streets,id'],
             'title' => ['required', 'string'],
-            'address' => ['nullable', 'string'],
+            'address' => ['required', 'string'],
             'city' => ['required', 'string'],
             'neighborhood' => ['required', 'string'],
             'country' => ['nullable', 'string'],
@@ -56,7 +57,7 @@ class PlaceStoreRequest extends FormRequest
             'type_service' => ['nullable', 'string'],
             'type_amenity' => ['nullable', 'string'],
             'status' => ['required', 'string'],
-            // 'reservation_required' => ['required'],
+            'reservation_required' => ['required'],
         ];
     }
 

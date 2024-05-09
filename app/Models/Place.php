@@ -166,4 +166,10 @@ class Place extends Model implements HasMedia
     {
         return $this->belongsToMany(Term::class);
     }
+
+    // city
+    public function city(): BelongsTo
+    {
+        return $this->belongsTo(City::class);
+    }
 }
